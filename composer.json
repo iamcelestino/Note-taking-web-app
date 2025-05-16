@@ -1,0 +1,16 @@
+{
+    "name": "dell/app-note-taking",
+    "description": "takes notes and manage your notes easily",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Celestino Trosso"
+        }
+    ],
+    "require": {}
+}
