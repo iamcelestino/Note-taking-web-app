@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core;
 
-abstract class controller 
+abstract class Controller 
 {
     abstract protected function index(): void;
 
