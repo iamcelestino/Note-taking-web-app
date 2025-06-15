@@ -28,7 +28,6 @@ class App
         $URL = array_values($URL);
         $this->params = $URL;
         call_user_func_array([$this->controller, $this->method], $this->params);
-
     }
 
     private function parse_url() 
