@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build-css": "npx sass public/src/styles.scss public/dist/styles.css --watch"
+    "build-css": "gulp"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "gulp": "^5.0.1",
     "sass": "^1.89.2"
+  },
+  "dependencies": {
+    "gulp-sass": "^6.0.1"
   }
 }

@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;800&display=swap");
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(25, 25, 25);
+  font-family: "Lexend", sans-serif;
+}
+
+main, header, footer {
+  padding: 0 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  line-height: 1.4;
+}
+.container h1, .container h2, .container h3, .container h4, .container h5, .container h6 {
+  color: rgb(255, 255, 255);
+}
+.container p {
+  color: rgb(179, 179, 179);
+}
+.container li {
+  list-style-type: none;
+}
+.container a {
+  text-decoration: none;
+}
+.container img {
+  max-width: 100%;
+  display: block;
+}
+.container span {
+  color: rgb(202, 255, 51);
+}
+.container svg {
+  max-width: 15%;
+}
+.container .button {
+  display: inline-block;
+  border: none;
+}
