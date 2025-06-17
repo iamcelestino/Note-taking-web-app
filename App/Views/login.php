@@ -10,10 +10,12 @@
     <main>
         <div class="form">
             <div class="container">
-                <img src="<?=ASSETS_URL?>/images/logo-1.svg" alt="logo">
-                <div>
-                    <h4>Welcome to Note</h4>
-                    <p>Please log in to continue</p>
+                <div class="header">
+                    <img src="<?=ASSETS_URL?>/images/logo-1.svg" alt="logo">
+                    <div>
+                        <h4>Welcome to Note</h4>
+                        <p>Please log in to continue</p>
+                    </div>
                 </div>
                 <form action="">
                     <label  for="email">Email Address</label>

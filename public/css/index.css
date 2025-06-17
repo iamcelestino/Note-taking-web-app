@@ -50,6 +50,15 @@ main {
   padding: 2rem;
   border-radius: 8px;
 }
+.form .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.form .header h4 {
+  text-align: center;
+}
 .form form div {
   text-align: center;
 }
