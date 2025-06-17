@@ -1,46 +1,53 @@
 
 @use '../variables' as v;
 
-form {
+.form {
 
-    div {
-        text-align: center;
+    width: 100%;
+    max-width: 500px; 
+    padding: 2rem;
+    border-radius: 8px;
+
+    form {
+
+        div {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 1rem 0;
+        }
+
+        input, button {
+            padding: 0.7rem;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        button {
+            background-color: v.$secondary;
+            color: v.$white;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
     }
 
-    label {
-        display: block;
-        margin: 1rem 0;
-    }
+    a {
+        
+        color: v.$white; 
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0.6rem;
+            border: 1px solid v.$gray;
+            border-radius: 8px;
+        }
 
-    input, button {
-        padding: 0.7rem;
-        width: 100%;
-        border: none;
-        border-radius: 8px;
-    }
-
-    button {
-        background-color: v.$secondary;
-        color: v.$white;
-        font-weight: bold;
-        margin-top: 1rem;
     }
 
 }
-
-a {
-    
-   color: v.$white; 
-
-   div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 0.6rem;
-        width: 100%;
-        border: 1px solid v.$gray;
-        border-radius: 8px;
-   }
-}
-

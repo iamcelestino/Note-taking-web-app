@@ -12,7 +12,7 @@
             <div class="container">
                 <img src="<?=ASSETS_URL?>/images/logo-1.svg" alt="logo">
                 <div>
-                    <h1>Welcome to Note</h1>
+                    <h4>Welcome to Note</h4>
                     <p>Please log in to continue</p>
                 </div>
                 <form action="">

@@ -11,6 +11,13 @@ body {
   color: rgb(255, 255, 255);
 }
 
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -37,36 +44,40 @@ body {
   max-width: 15%;
 }
 
-form div {
+.form {
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  border-radius: 8px;
+}
+.form form div {
   text-align: center;
 }
-form label {
+.form form label {
   display: block;
   margin: 1rem 0;
 }
-form input, form button {
+.form form input, .form form button {
   padding: 0.7rem;
   width: 100%;
   border: none;
   border-radius: 8px;
 }
-form button {
+.form form button {
   background-color: rgb(51, 85, 255);
   color: rgb(255, 255, 255);
   font-weight: bold;
   margin-top: 1rem;
 }
-
-a {
+.form a {
   color: rgb(255, 255, 255);
 }
-a div {
+.form a div {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   padding: 0.6rem;
-  width: 100%;
   border: 1px solid rgb(179, 179, 179);
   border-radius: 8px;
 }
