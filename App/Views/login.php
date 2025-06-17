@@ -8,27 +8,30 @@
 </head>
 <body>
     <main>
-        <div>
-            <img src="<?=ASSETS_URL?>/images/logo.svg" alt="logo">
-            <div>
-                <h1>Welcome to Note</h1>
-                <p>Please log in to continue</p>
-            </div>
-            <form action="">
-                <label  for="email">Email Address</label>
-                <input type="email" name="email" id="email">
+        <div class="form">
+            <div class="container">
+                <img src="<?=ASSETS_URL?>/images/logo-1.svg" alt="logo">
+                <div>
+                    <h1>Welcome to Note</h1>
+                    <p>Please log in to continue</p>
+                </div>
+                <form action="">
+                    <label  for="email">Email Address</label>
+                    <input type="email" name="email" id="email">
 
-                <label  for="password">Password</label>
-                <input type="password" name="password" id="password">
-            </form>
-            <div>
-                <p>or login with</p>
-                <a href="">
-                    <div>
-                        <img src="<?=ASSETS_URL?>/images/Google.png" alt="goole-logo">
-                        <p>Google</p>
-                    </div>
-                </a>
+                    <label  for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                    <button type="submit">Login</button>
+                </form>
+                <div>
+                    <p>or login with</p>
+                    <a href="">
+                        <div>
+                            <img src="<?=ASSETS_URL?>/images/Google-1.png" alt="goole-logo">
+                            <p>Google</p>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </main>

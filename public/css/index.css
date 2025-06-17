@@ -8,10 +8,7 @@
 body {
   background-color: rgb(25, 25, 25);
   font-family: "Lexend", sans-serif;
-}
-
-main, header, footer {
-  padding: 0 2rem;
+  color: rgb(255, 255, 255);
 }
 
 .container {
@@ -22,9 +19,6 @@ main, header, footer {
 }
 .container h1, .container h2, .container h3, .container h4, .container h5, .container h6 {
   color: rgb(255, 255, 255);
-}
-.container p {
-  color: rgb(179, 179, 179);
 }
 .container li {
   list-style-type: none;
@@ -37,12 +31,42 @@ main, header, footer {
   display: block;
 }
 .container span {
-  color: rgb(202, 255, 51);
+  color: rgb(51, 85, 255);
 }
 .container svg {
   max-width: 15%;
 }
-.container .button {
-  display: inline-block;
+
+form div {
+  text-align: center;
+}
+form label {
+  display: block;
+  margin: 1rem 0;
+}
+form input, form button {
+  padding: 0.7rem;
+  width: 100%;
   border: none;
+  border-radius: 8px;
+}
+form button {
+  background-color: rgb(51, 85, 255);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+a {
+  color: rgb(255, 255, 255);
+}
+a div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0.6rem;
+  width: 100%;
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 8px;
 }
