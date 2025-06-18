@@ -2,7 +2,6 @@
 @use '../variables' as v;
 
 .form {
-
     width: 100%;
     max-width: 500px; 
     padding: 2rem;
@@ -17,10 +16,14 @@
         h4 {
             text-align: center;
         }
+
+        p {
+            margin: 1rem 0;
+        }
     }
 
+ 
     form {
-
 
         div {
             text-align: center;
@@ -37,19 +40,19 @@
             border: none;
             border-radius: 8px;
         }
-
+        
         button {
             background-color: v.$secondary;
             color: v.$white;
             font-weight: bold;
             margin-top: 1rem;
         }
-
     }
 
     a {
-        
         color: v.$white; 
+        margin: 1rem 0;
+
         div {
             display: flex;
             align-items: center;
@@ -60,6 +63,11 @@
             border-radius: 8px;
         }
 
+    }
+
+    .footer p:nth-child(1), p:nth-child(3) {
+        text-align: center;
+        margin: 1rem 0;
     }
 
 }

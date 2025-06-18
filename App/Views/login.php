@@ -25,14 +25,15 @@
                     <input type="password" name="password" id="password">
                     <button type="submit">Login</button>
                 </form>
-                <div>
-                    <p>or login with</p>
+                <div class="footer">
+                    <p class="">or login with</p>
                     <a href="">
                         <div>
                             <img src="<?=ASSETS_URL?>/images/Google-1.png" alt="goole-logo">
                             <p>Google</p>
                         </div>
                     </a>
+                    <p>No account yet? <a href="">sign up</a></p>
                 </div>
             </div>
         </div>

@@ -26,8 +26,8 @@
                     <input type="password" name="password" id="password">
                     <button type="submit">Sign up</button>
                 </form>
-                <div>
-                    <p>or login with</p>
+                <div class="footer">
+                    <p class="">or sign up with</p>
                     <a href="">
                         <div>
                             <img src="<?=ASSETS_URL?>/images/Google-1.png" alt="goole-logo">
