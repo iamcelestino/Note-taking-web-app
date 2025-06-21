@@ -9,22 +9,39 @@ use PDOException;
 class Database implements DatabaseInterface
 {
     private static ?PDO $pdo = null;
-    private string $dsn = "mysql:host=". HOST .";dbname=". DB_NAME .";charset=utf8";
+    private string $dsn;
+    private string $username;
+    private string $password;
+
+    public function __construct()
+    {
+        $config = require __DIR__ . '/config.php';
+
+        $this->dsn = "mysql:host={$config['db']['host']};dbname={$config['db']['name']};charset=utf8mb4";
+        $this->username = $config['db']['user'];
+        $this->password = $config['db']['pass'];
+    }
 
     public function connection(): PDO
     {
-        if(self::$pdo === null) {
-            try{
-                self::$pdo = new PDO($this->dsn, USER, PASSWORD, [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-                ]);
-            }catch(PDOException $e) {
-                  die("CONNECTION FAILED: " . $e->getMessage());
+        if (self::$pdo === null) {
+            try {
+                self::$pdo = new PDO(
+                    $this->dsn,
+                    $this->username,
+                    $this->password,
+                    [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                    ]
+                );
+            } catch (PDOException $e) {
+                die('Database connection failed: ' . $e->getMessage());
             }
         }
+
         return self::$pdo;
     }
-
     public function query(string $query, array $queryData, string $queryDataType = "object"): array|bool
     {
         $statement = $this->connection()->prepare($query);

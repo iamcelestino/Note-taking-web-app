@@ -23,7 +23,7 @@ class App
                 unset($URL[0]);
             }
         }
-
+        
         $controllerClass = "App\\Controllers\\" . $this->controller;
 
         if (!class_exists($controllerClass)) {
