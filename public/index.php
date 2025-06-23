@@ -8,6 +8,12 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
+use App\Models\User;
+use App\Services\AuthService;
+
+$userModel = new User();
+$authService = new AuthService($userModel);
+
 use App\Core\App;
 
 $app = new App();

@@ -8,5 +8,8 @@ use App\Core\Model;
 
 class User extends Model implements userInterface
 {
-    
+    public function findByEmail(string $email): array|bool|object
+    {
+        return $this->where('email', $email);
+    }
 }

@@ -37,13 +37,13 @@ abstract class Model extends Database
     }
 
 
-    protected function all(): array|object|bool
+    public function all(): array|object|bool
     {
         $query = "SELECT * FROM ". $this->table;
         return $this->query($query, []);
     }
 
-    protected function insert(array $data): bool
+    public function insert(array $data): bool
     {
         $keys = array_keys($data);
         $columns = implode(',', $keys);
@@ -53,7 +53,7 @@ abstract class Model extends Database
         return $this->query($query, $data);
     }
 
-    protected function upddate(mixed $id, array $data): mixed
+    public function upddate(mixed $id, array $data): mixed
     {
         $string = '';
         foreach($data as $key => $value) {
@@ -72,7 +72,7 @@ abstract class Model extends Database
 
     }
 
-    public function getPrimaryKey(): string|int
+    protected function getPrimaryKey(): string|int
     {
         static $primaryKeys = [];
         if(!isset($primaryKeys[$this->table])) {
@@ -85,10 +85,8 @@ abstract class Model extends Database
                 throw new Exception("Primary key not found for table {$this->table}");
 
             }
-
         }
-
-         return $primaryKeys[$this->table];
+        return $primaryKeys[$this->table];
     }
 
     public function delete(int|string $id) 

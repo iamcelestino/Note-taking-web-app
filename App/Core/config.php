@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Core;
-
 return [
     'app_name' => $_ENV['APP_NAME'] ?? 'my app',
     'app_env' => $_ENV['APP_ENV'] ?? 'produtction',
