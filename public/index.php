@@ -4,17 +4,22 @@ require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../App/Core/helpers.php';
 
 use Dotenv\Dotenv;
+use App\Core\Router;
+use App\Controllers\
+{SignupController, HomeController};
 
 $dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
-use App\Models\User;
-use App\Services\AuthService;
+$router = new Router();
 
-$userModel = new User();
-$authService = new AuthService($userModel);
+$router->get('/', [HomeController::class, 'index']);
+$router->get('/signup', [SignupController::class, 'index']);
 
-use App\Core\App;
+$method = $_SERVER['REQUEST_METHOD'];
+$uri = $_SERVER['REQUEST_URI'];
 
-$app = new App();
+$router->dispatch($method, $uri);
+
+
 

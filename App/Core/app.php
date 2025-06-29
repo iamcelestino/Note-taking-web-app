@@ -6,11 +6,12 @@ namespace App\Core;
 class App 
 {
     protected string|object $controller = 'HomeController';
-    protected string $method = 'index';
-    protected array $params = [];
+    protected string $method            = 'index';
+    protected array $params             = [];
 
-    public function __construct()
+    public function __construct(protected array $services = [])
     {
+        
         $URL = $this->parse_url();
 
         if (isset($URL[0])) {
@@ -23,7 +24,7 @@ class App
                 unset($URL[0]);
             }
         }
-        
+
         $controllerClass = "App\\Controllers\\" . $this->controller;
 
         if (!class_exists($controllerClass)) {
