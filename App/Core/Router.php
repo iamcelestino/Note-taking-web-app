@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Core;
+use App\Core\Container;
 
 class Router
 {
@@ -8,6 +9,12 @@ class Router
         'GET'=> [],
         'POST'=> [],
     ];
+    protected Container $container;
+
+    public function __construct()
+    {
+        $this->container = new Container;
+    }
 
     public function get(string $path, array $handler): void
     {
@@ -38,7 +45,8 @@ class Router
             exit;
         }
 
-        $instance = new $controller();
+        $instance = $this->container->resolve($controller);
+        
         call_user_func([$instance, $method]);
     }
 
