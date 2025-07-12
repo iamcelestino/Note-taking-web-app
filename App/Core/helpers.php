@@ -12,3 +12,10 @@ function config($key, $default = null)
 
     return $config[$key] ?? $default;
 }
+
+
+function dd(mixed $data) {
+    echo '';
+    print_r($data);
+    echo '';
+}

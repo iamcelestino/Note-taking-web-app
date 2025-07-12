@@ -9,18 +9,7 @@ use PDOException;
 class Database implements DatabaseInterface
 {
     private static ?PDO $pdo = null;
-    private string $dsn;
-    private string $username;
-    private string $password;
-
-    public function __construct()
-    {
-        $config = require __DIR__ . '/config.php';
-
-        $this->dsn = "mysql:host={$config['db']['host']};dbname={$config['db']['name']};charset=utf8mb4";
-        $this->username = $config['db']['user'];
-        $this->password = $config['db']['pass'];
-    }
+    private string $dsn = "mysql:host=127.0.0.1;dbname=app_note_taking;charset=utf8mb4";
 
     public function connection(): PDO
     {
@@ -28,8 +17,8 @@ class Database implements DatabaseInterface
             try {
                 self::$pdo = new PDO(
                     $this->dsn,
-                    $this->username,
-                    $this->password,
+                    config['db']['user'],
+                    config['db']['pass'],
                     [
                         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

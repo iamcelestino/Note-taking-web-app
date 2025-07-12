@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Core;
 use App\Core\Container;
 
@@ -7,15 +9,14 @@ class Router
 {
     protected array $routes = [
         'GET'=> [],
-        'POST'=> [],
+        'POST'=> []
     ];
-    protected Container $container;
 
-    public function __construct()
+    public function __construct(protected Container $container)
     {
-        $this->container = new Container;
+        $this->container = $container;
     }
-
+    
     public function get(string $path, array $handler): void
     {
         $this->routes['GET'][$path] = $handler;
@@ -46,7 +47,7 @@ class Router
         }
 
         $instance = $this->container->resolve($controller);
-        
+
         call_user_func([$instance, $method]);
     }
 

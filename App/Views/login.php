@@ -18,7 +18,7 @@
                         <p>Please log in to continue</p>
                     </div>
                 </div>
-                <form action="" method="POST">
+                <form method="POST">
                     <label  for="email">Email Address</label>
                     <input type="email" name="email" id="email">
 

@@ -18,9 +18,9 @@
                         <p>Sign to notes</p>
                     </div>
                 </div>
-                <form action="">
-                    <label  for="fullname">Full Name</label>
-                    <input type="fullname" name="fullname" id="fullname">
+                <form action="/signup/submit" method="POST">
+                    <label  for="full_name">Full Name</label>
+                    <input type="text" name="full_name" id="full_name">
                     <label  for="email">Email Address</label>
                     <input type="email" name="email" id="email">
                     <label  for="password">Password</label>
