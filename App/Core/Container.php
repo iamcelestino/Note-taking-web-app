@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace App\Core;
 
 use ReflectionClass;
@@ -12,7 +13,7 @@ class Container
     }
 
     public function resolve(string $class) {
-        
+
         $reflector = new ReflectionClass($class);
 
         if (!$reflector->isInstantiable()) {

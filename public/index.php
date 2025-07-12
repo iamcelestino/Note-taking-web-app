@@ -7,21 +7,22 @@ use Dotenv\Dotenv;
 use App\Core\Router;
 use App\Core\Container;
 use App\Contracts\UserInterface;
+use App\Contracts\UserValidateInterface;
+use App\Validators\UserValidator;
 use App\Models\User;
-use App\Controllers\
-{SignupController, HomeController};
+use App\Controllers\{SignupController, HomeController};
 
 $dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 $_ENV = array_merge($_ENV, $_SERVER);
 
-
 define('config', require __DIR__ . '/../App/Core/config.php');
 
 $container = new Container();
 $container->bind(UserInterface::class, User::class);
-$router = new Router($container);
+$container->bind(UserValidateInterface::class, UserValidator::class);
 
+$router = new Router($container);
 $router->get('/', [HomeController::class, 'index']);
 $router->get('/signup', [SignupController::class, 'index']);
 $router->post('/signup/submit', [SignupController::class, 'submit']);
@@ -29,7 +30,6 @@ $router->post('/signup/submit', [SignupController::class, 'submit']);
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
 $router->dispatch($method, $uri);
-
 
 
 
