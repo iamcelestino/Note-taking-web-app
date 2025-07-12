@@ -10,7 +10,7 @@ use App\Contracts\UserInterface;
 use App\Contracts\UserValidateInterface;
 use App\Validators\UserValidator;
 use App\Models\User;
-use App\Controllers\{SignupController, HomeController};
+use App\Controllers\{SignupController, HomeController, LoginController};
 
 $dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
@@ -24,6 +24,8 @@ $container->bind(UserValidateInterface::class, UserValidator::class);
 
 $router = new Router($container);
 $router->get('/', [HomeController::class, 'index']);
+$router->get('/login', [LoginController::class, 'index']);
+$router->post('/login/submit', [LoginController::class, 'submit']);
 $router->get('/signup', [SignupController::class, 'index']);
 $router->post('/signup/submit', [SignupController::class, 'submit']);
 

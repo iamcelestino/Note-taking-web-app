@@ -26,5 +26,4 @@ class SignupController extends Controller
         }
     }
 
-
 }

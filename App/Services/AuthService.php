@@ -18,5 +18,18 @@ class AuthService
         $this->userModel->insert($user);
     }
 
+    public function login(array $data): bool
+    {
+        $this->validator->login($data);
+
+        $user = $this->userModel->where('email', $data['email'])[0] ?? null;
+        
+        if ($user && password_verify($data['password'], $user->password)) {
+            return true;
+        }
+
+        throw new \Exception("Invalid data");
+    }
+
 }
 
