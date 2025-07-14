@@ -9,8 +9,7 @@ class LoginController extends Controller
 {
     public function __construct(
         protected AuthService $auth
-    )
-    {
+    ){
         $this->auth = $auth;
     }
 
@@ -22,7 +21,6 @@ class LoginController extends Controller
     public function submit(): void
     {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             if( $this->auth->login($_POST)) {
                 echo " Successfully logged in";
             }

@@ -9,8 +9,7 @@ class SignupController extends Controller
 {
     public function __construct(
         protected AuthService $auth
-    )
-    {
+    ){
         $this->auth = $auth;
     }
 
