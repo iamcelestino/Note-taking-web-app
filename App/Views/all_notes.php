@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="<?= $config['assets_url'] ?>">
+    <link rel="stylesheet" href="/public/css/index.css">
     <style>
+        
         *, *::before, *::after {
             margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            overflow: hidden;
+            background-color: #191B25;
+            color: white;
         }
 
         main {
@@ -27,36 +28,113 @@
 
         header {
             border: 2px solid darkblue;
+            display: flex;
+
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
         }
 
         #navigation {
             grid-column: 1 / 2;
             grid-row: 1 / 11;
+            padding: 1rem;
             border: 2px solid orange;
         }
+
+        #navigation > div div:nth-child(2) {
+            border-bottom: 1px solid gray;
+            padding: 1rem 0;
+        } 
+      
 
         #page_header {
             grid-column: 2 / 7;
-            grid-row: 1 / 2;
+            padding: 0 1rem;
             border: 2px solid darkblue;
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        nav input {
+            padding: 0.4rem;
+            max-width: 100%;
+            background-color: #191B25;
+            border: 1.4px solid gray;
+            border-radius: 5px;
+        }
+
+        nav div:nth-child(2) {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
         #all_notes {
             grid-column: 2 / 3;
             grid-row: 2 / 11;
+            padding: 1rem;
             border: 2px solid orange;
+        }
+
+        #all_notes a {
+            display: inline-block;
+            background-color: #2547D0;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            padding: 0.6rem;
+            width: 100%;
+            border-radius: 5px;
         }
 
         #content {
             grid-column: 3 / 6;
             grid-row: 2 / 11; 
+            padding: 1rem;
             border: 2px solid green;
+        }
+
+        #content button {
+            background-color: #2547D0;
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 0.7rem;
+            border-radius: 1.4px;
+        }
+
+        form div{
+            border-top: 1px solid gray;
+        }
+
+        textarea {
+            display: block;
         }
 
         #right_back_menu {
             grid-column: 6 / 7;
             grid-row: 2 / 11;
+            padding: 1rem;
             border: 2px solid orange;
+        }
+
+        #right_back_menu a {
+            display: block;
+            padding: 0.4rem;
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+            border: 1.4px solid gray;
+            margin-bottom: 0.5rem;
+            
         }
     </style>
 </head>
@@ -65,11 +143,19 @@
     <main>
         <aside id="navigation">
             <div>
-                <img src="" alt="logo">
-            </div>
-            <div>
-                <a href="">All Notes</a>
-                <a href="">Archived Notes</a>
+                <div>
+                    <img src="" alt="logo">
+                </div>
+                <div>
+                    <div>
+                        <ion-icon name="home-outline"></ion-icon>
+                        <a href="">All Notes</a>
+                    </div>
+                    <div>
+                        <ion-icon name="archive-outline"></ion-icon>
+                        <a href="">Archived Notes</a>
+                    </div>
+                </div>
             </div>
             <div class="tags">
                 <p>PHP</p>
@@ -85,7 +171,7 @@
                 <div>
                     <input type="text" placeholder="search by title, content, or tags">
                     <div>
-                        <p>definicoes</p>
+                        <ion-icon name="settings-outline"></ion-icon>
                     </div>
                 </div>
             </nav>
@@ -110,8 +196,14 @@
                 <h1>React Performance Optimization</h1>
                 <div>
                     <div>
-                        <p>tags</p>
-                        <p>last edited</p>
+                        <p>
+                            <ion-icon name="pricetags-outline"></ion-icon>
+                            tags
+                        </p>
+                        <p>
+                            <ion-icon name="time-outline"></ion-icon>
+                            last edited
+                        </p>
                     </div>
                     <div>
                         <p>React, dev</p>
@@ -120,27 +212,30 @@
                 </div>
                 <div>
                     <form action="">
-                        <textarea name="" id=""></textarea>
+                        <textarea name="" id="" ></textarea>
+                        <div>
+                            <button type="submit">Save Note</button>
+                            <a href="">Cancel</a>
+                        </div>
                     </form>
-                    <button>Save Note</button>
-                    <button>Cancel</button>
+               
                 </div>
             </div>
         </section>
 
         <aside id="right_back_menu">
-            <div>
-                <a href="">+ create new notes</a>
-            </div>
-            <div>
-                <h1>PHP Has never died</h1>
-                <div class="tags">
-                    <p>PHP</p>
-                    <p>language</p>
-                </div>
-                <p>14 jul 2025</p>
-            </div>
+            <a href="">
+                <ion-icon name="archive-outline"></ion-icon>
+                Archive note
+            </a>
+            <a href="">
+                <ion-icon name="trash-outline"></ion-icon>
+                Delete Note
+            </a>
         </aside>
     </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
