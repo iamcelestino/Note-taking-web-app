@@ -26,7 +26,6 @@ class UserValidator implements UserValidateInterface
 
     public function login(array $user): bool
     {
-        
         if(empty($user['email']) || (!filter_var($user['email'], FILTER_VALIDATE_EMAIL))) {
             throw new Exception("This email is not ok");
         }
@@ -34,7 +33,7 @@ class UserValidator implements UserValidateInterface
         if(empty($user['password']) || $user['password'] <= 4) {
             throw new Exception("This password is not ok");
         }
-        
+
         return false;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../App/Core/helpers.php';
+require __DIR__ . '/../App/Helpers/Helpers.php';
 require __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
@@ -12,11 +12,10 @@ use App\Validators\UserValidator;
 use App\Models\User;
 use App\Controllers\{SignupController, HomeController, LoginController};
 
+
 $dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
-$_ENV = array_merge($_ENV, $_SERVER);
 
-define('config', require __DIR__ . '/../App/Core/config.php');
 
 $container = new Container();
 $container->bind(UserInterface::class, User::class);

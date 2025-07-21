@@ -1,11 +1,10 @@
-<?php $config = require __DIR__ . '/../Core/config.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="/public/css/index.css">
     <style>
         
         *, *::before, *::after {
@@ -111,6 +110,7 @@
             border-radius: 1.4px;
         }
 
+
         form div{
             border-top: 1px solid gray;
         }
@@ -134,7 +134,6 @@
             border-radius: 5px;
             border: 1.4px solid gray;
             margin-bottom: 0.5rem;
-            
         }
     </style>
 </head>
@@ -144,7 +143,7 @@
         <aside id="navigation">
             <div>
                 <div>
-                    <img src="" alt="logo">
+                    <img src="<?=config('assets_url')?>/images/logo-1.svg" alt="logo">
                 </div>
                 <div>
                     <div>
@@ -212,7 +211,7 @@
                 </div>
                 <div>
                     <form action="">
-                        <textarea name="" id="" ></textarea>
+                        <textarea name="" id="" rows="25" cols="40"></textarea>
                         <div>
                             <button type="submit">Save Note</button>
                             <a href="">Cancel</a>

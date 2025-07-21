@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 use App\Contracts\{UserInterface, UserValidateInterface};
+use Google_Client;
 
 class AuthService 
 {
@@ -29,6 +30,23 @@ class AuthService
         }
 
         throw new \Exception("Invalid data");
+    }
+
+    public function getGoogleClient(): Google_Client
+    {
+        $client = new Google_Client();
+        $client->setClientId();
+        $client->setClientSecret();
+        $client->setRedirectUri();
+        $client->addScope();
+        $client->addScope();
+
+        return $client;
+    }
+
+    public function signupWithGoogle(): void
+    {
+        
     }
 
 }

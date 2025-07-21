@@ -1,18 +1,29 @@
 <?php
 
-return [
-    'app_name' => $_ENV['APP_NAME'] ?? 'my app',
-    'app_env' => $_ENV['APP_ENV'] ?? 'produtction',
-    'debug' => $_ENV['APP_DEBUG'] ?? 'false',
+namespace App\Core;
+use Exception;
 
-    'db' => [
-        'host' => $_ENV['DB_HOST'],
-        'port' => $_ENV['DB_PORT'],
-        'name' => $_ENV['DB_NAME'],
-        'user' => $_ENV['DB_USER'],
-        'pass' => $_ENV['DB_PASS'],
-    ],
+class Config 
+{
+    protected static array $config = [];
 
-    'base_url' => $_ENV['BASE_URL'],
-    'assets_url' => $_ENV['ASSETS_URL']
-];
+    public static function load(string $path): void
+    {
+        if( ! file_exists($path)) {
+            throw new Exception("config file not found at {$path}"); 
+
+        }
+        self::$config = require $path;
+    }
+
+    public static function get(string $key, mixed $default = null): mixed
+    {
+        return self::$config[$key] ?? $default;
+    }
+
+    public static function all(): array
+    {
+        return self::$config;
+    }
+
+}
