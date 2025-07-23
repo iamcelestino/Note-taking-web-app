@@ -63,4 +63,14 @@ class AuthController extends Controller
         header('Location: ' . $authUrl);
         exit;
     }
+
+    public function forgotPassword(): void
+    {
+        $this->view('forgot_password', []);
+    }
+
+    public function resetPassword(): void
+    {
+        $this->view('reset_password', []);
+    }
 }

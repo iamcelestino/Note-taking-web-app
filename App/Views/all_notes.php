@@ -143,7 +143,7 @@
         <aside id="navigation">
             <div>
                 <div>
-                    <img src="<?=config('assets_url')?>/images/logo-1.svg" alt="logo">
+                    <img src="<?=config('assets_url')?>images/logo-1.svg" alt="logo">
                 </div>
                 <div>
                     <div>

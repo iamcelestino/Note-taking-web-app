@@ -1,6 +1,5 @@
 <?php
 
-require __DIR__ . '/../App/Helpers/Helpers.php';
 require __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
@@ -34,6 +33,7 @@ $router->get('/signup', [SignupController::class, 'index']);
 $router->post('/signup/submit', [SignupController::class, 'submit']);
 $router->get('/auth/google', [AuthController::class, 'redirectToGoogle']);
 $router->get('/callback.php', [AuthController::class, 'callback']);
+$router->get('/forgotPassword', [AuthController::class, 'forgotPassword']);
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];

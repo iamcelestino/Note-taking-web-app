@@ -20,6 +20,5 @@ return [
         'projectId' => '',
     ],
 
-    'base_url' => $_ENV['BASE_URL'],
-    'assets_url' => $_ENV['ASSETS_URL'],
+    'base_url' => $_ENV['BASE_URL']
 ];
