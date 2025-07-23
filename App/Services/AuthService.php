@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Services;
 use App\Contracts\{UserInterface, UserValidateInterface};
 use Google_Client;
+use Google_Service_OAuth2;
 
 class AuthService 
 {
@@ -35,18 +36,13 @@ class AuthService
     public function getGoogleClient(): Google_Client
     {
         $client = new Google_Client();
-        $client->setClientId();
-        $client->setClientSecret();
-        $client->setRedirectUri();
-        $client->addScope();
-        $client->addScope();
+        $client->setClientId(config('googleSecret')['clientId']);
+        $client->setClientSecret(config('googleSecret')['clientSecret']);
+        $client->setRedirectUri(config('googleSecret')['redirectUri']);
+        $client->addScope('email');
+        $client->addScope('profile');
 
         return $client;
-    }
-
-    public function signupWithGoogle(): void
-    {
-        
     }
 
 }

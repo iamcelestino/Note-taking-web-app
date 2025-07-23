@@ -29,7 +29,7 @@
                 </form>
                 <div class="footer">
                     <p class="">or login with</p>
-                    <a href="">
+                    <a href="/auth/google">
                         <div>
                             <img src="<?=config('assets_url')?>/images/Google-1.png" alt="goole-logo">
                             <p>Google</p>
