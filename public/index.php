@@ -34,6 +34,7 @@ $router->post('/signup/submit', [SignupController::class, 'submit']);
 $router->get('/auth/google', [AuthController::class, 'redirectToGoogle']);
 $router->get('/callback.php', [AuthController::class, 'callback']);
 $router->get('/forgotPassword', [AuthController::class, 'forgotPassword']);
+$router->get('/resetPassword', [AuthController::class, 'resetPassword']);
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];

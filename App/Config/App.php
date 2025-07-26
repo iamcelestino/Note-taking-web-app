@@ -20,5 +20,12 @@ return [
         'projectId' => '',
     ],
 
-    'base_url' => $_ENV['BASE_URL']
+    'base_url' => $_ENV['BASE_URL'],
+
+    'smtp_config' => [
+        'host' => $_ENV['MAIL_HOST'], 
+        'username'=> $_ENV['MAIL_HOST'], 
+        'password' => $_ENV['MAIL_PASSWORD'], 
+        'port' => $_ENV['MAIL_PORT']
+    ]
 ];

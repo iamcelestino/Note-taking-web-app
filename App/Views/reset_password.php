@@ -15,28 +15,18 @@
                 <div class="header">
                     <img src="<?= config('assets_url')?>/images/logo-1.svg" alt="logo">
                     <div>
-                        <h4>Welcome to Note</h4>
-                        <p>Please log in to continue</p>
+                        <h2>Reset your password</h2>
+                        <p>Choose a new password to secure your account</p>
                     </div>
                 </div>
-                <form action="/login/submit" method="POST">
-                    <label  for="email">Email Address</label>
-                    <input type="email" name="email" id="email">
-
-                    <label  for="password">Password</label>
+                <form action="" method="POST">
+                    <label  for="email">New Password</label>
                     <input type="password" name="password" id="password">
-                    <button type="submit">Login</button>
+
+                    <label  for="passwordTwo">Confirm New Password</label>
+                    <input type="password" name="confirmPassword" id="Confirmpassword">
+                    <button type="submit">Reset Password</button>
                 </form>
-                <div class="footer">
-                    <p class="">or login with</p>
-                    <a href="/auth/google">
-                        <div>
-                            <img src="<?=config('assets_url')?>images/Google-1.png" alt="goole-logo">
-                            <p>Google</p>
-                        </div>
-                    </a>
-                    <p>No account yet? <a href="">sign up</a></p>
-                </div>
             </div>
         </div>
     </main>

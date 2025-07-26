@@ -6,6 +6,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="<?= config('assets_url')?>/css/index.css">
     <style>
+        
     </style>
 </head>
 <body>

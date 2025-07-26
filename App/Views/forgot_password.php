@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="<?= config('assets_url')?>/css/index.css">
-    <style>
-    </style>
 </head>
 <body>
     <main>
@@ -15,7 +13,7 @@
                 <div class="header">
                     <img src="<?= config('assets_url')?>/images/logo-1.svg" alt="logo">
                     <div>
-                        <h4>Forgotten your password?</h4>
+                        <h2>Forgotten your password?</h2>
                         <p>Enter your email below, and will send a link to reset it</p>
                     </div>
                 </div>
