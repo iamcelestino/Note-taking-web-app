@@ -17,7 +17,7 @@
                         <p>Enter your email below, and will send a link to reset it</p>
                     </div>
                 </div>
-                <form action="/login/submit" method="POST">
+                <form action="/forgotPassword" method="POST">
                     <label  for="email">Email Address</label>
                     <input type="email" name="email" id="email">
                     <button type="submit">Send the reset Link</button>

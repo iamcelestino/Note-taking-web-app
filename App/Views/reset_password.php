@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="<?= config('assets_url')?>/css/index.css">
-    <style>
-    </style>
 </head>
 <body>
     <main>
@@ -19,12 +17,13 @@
                         <p>Choose a new password to secure your account</p>
                     </div>
                 </div>
-                <form action="" method="POST">
+                <form action="/resetPassword" method="POST">
+                    <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
                     <label  for="email">New Password</label>
                     <input type="password" name="password" id="password">
 
-                    <label  for="passwordTwo">Confirm New Password</label>
-                    <input type="password" name="confirmPassword" id="Confirmpassword">
+                    <label  for="ConfirmPassword">Confirm New Password</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword">
                     <button type="submit">Reset Password</button>
                 </form>
             </div>

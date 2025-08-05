@@ -2,16 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Contracts\DatabaseInterface;
 use App\Contracts\UserRepositoryInterface;
 use App\Core\Controller;
-use App\Services\AuthService;
+use App\Repositories\{PasswordResetRepository, UserRepository};
+use App\Services\PasswordResetService;
 use Google_Client;
 use Google_Service_OAuth2;
 
 class AuthController extends Controller
 {
     public function __construct (
-        protected UserRepositoryInterface $userRepo
+        protected UserRepositoryInterface $userRepo,
+        protected DatabaseInterface $database
     ){}
 
     public function index(): void
@@ -69,8 +72,51 @@ class AuthController extends Controller
         $this->view('forgot_password', []);
     }
 
+    public function handleForgotPassword()
+    {
+        $email = $_POST['email'] ?? '';
+
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $passwordResetService = new PasswordResetService(
+                new PasswordResetRepository($this->database),
+                new UserRepository($this->database)
+            );
+
+            $passwordResetService->requestReset($email);
+
+            echo "A link was sent for you to reset your password";
+        }else {
+            echo "Invalid email format";
+        }
+    }
+
     public function resetPassword(): void
     {
-        $this->view('reset_password', []);
+        $token = $_GET['token'] ?? '';
+        $this->view('reset_password', ['token' => $token]);
+    }
+
+    public function handleResetPassword()
+    {
+        $token = $_POST['token'];
+        $password = $_POST['password'];
+        $confirmPassword = $_POST['confirmPassword'];
+
+        if($password != $confirmPassword || strlen($password) < 6) {
+            echo "password does match or it too short";
+            return;
+        }
+
+        $passwordResetService = new PasswordResetService(
+            new PasswordResetRepository($this->database),
+            new UserRepository($this->database)
+        );
+
+        if($passwordResetService->resetPassword($token, $password)) {
+            echo "Succesfully reseted password";
+        } else {
+            echo "Invalid Password";
+        }
+
     }
 }

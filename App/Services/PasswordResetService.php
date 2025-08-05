@@ -1,18 +1,15 @@
 <?php
 
 namespace App\Services;
-use App\Contracts\PasswordResetRepositoryInterface;
 use App\Mail\PasswordResetMail;
-
+use App\Contracts\{PasswordResetRepositoryInterface, UserRepositoryInterface};
 
 class PasswordResetService
 {
     public function __construct(
-        private PasswordResetRepositoryInterface $passwordRepository
-    )
-    {
-        $this->passwordRepository = $passwordRepository;
-    }
+        private PasswordResetRepositoryInterface $passwordRepository,
+        private UserRepositoryInterface $userRepository
+    ){}
 
     public function requestReset(string $email): bool
     {
@@ -25,6 +22,20 @@ class PasswordResetService
 
     public function resetPassword(string $token, string $newPassword): bool
     {
+        $resetRecord = $this->passwordRepository->findBytoken($token);
+
+        if( ! $resetRecord || !isset($resetRecord['email'])) {
+            return false;
+        }
+
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        $email = $resetRecord['email'];
+
+        $this->userRepository->updatePasswordByEmail($email, $hashedPassword);
+        $this->passwordRepository->deleteByEmail($email);
+
         return true;
     }
+
+    
 }

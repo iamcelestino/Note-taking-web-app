@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,7 +61,7 @@
         <section id="content">
             <div>
                 <h1>React Performance Optimization</h1>
-                <div>
+                <div class="">
                     <div>
                         <p>
                             <ion-icon name="pricetags-outline"></ion-icon>
@@ -86,7 +85,6 @@
                             <a href="">Cancel</a>
                         </div>
                     </form>
-               
                 </div>
             </div>
         </section>

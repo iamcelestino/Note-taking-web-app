@@ -24,7 +24,7 @@ return [
 
     'smtp_config' => [
         'host' => $_ENV['MAIL_HOST'], 
-        'username'=> $_ENV['MAIL_HOST'], 
+        'username'=> $_ENV['MAIL_USERNAME'], 
         'password' => $_ENV['MAIL_PASSWORD'], 
         'port' => $_ENV['MAIL_PORT']
     ]

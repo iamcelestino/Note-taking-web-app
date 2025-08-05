@@ -17,8 +17,8 @@ class Database implements DatabaseInterface
             try {
                 self::$pdo = new PDO(
                     $this->dsn,
-                    config['db']['user'],
-                    config['db']['pass'],
+                    config('db')['user'],
+                    config('db')['pass'],
                     [
                         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -31,9 +31,11 @@ class Database implements DatabaseInterface
 
         return self::$pdo;
     }
+    
     public function query(string $query, array $queryData, string $queryDataType = "object"): array|bool
     {
         $statement = $this->connection()->prepare($query);
+
         if($statement && $statement->execute($queryData)) {
             return $queryDataType === "object" 
             ? $statement->fetchAll(PDO::FETCH_OBJ)

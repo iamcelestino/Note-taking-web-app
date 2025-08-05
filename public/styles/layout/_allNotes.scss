@@ -1,6 +1,5 @@
 @use '../variables' as v;
 
-
 body {
     background-color: #191B25;
     color: white;
@@ -15,9 +14,7 @@ main {
 }
 
 header {
-    border: 2px solid darkblue;
     display: flex;
-
 }
 
 a {
@@ -29,7 +26,7 @@ a {
     grid-column: 1 / 2;
     grid-row: 1 / 11;
     padding: 1rem;
-    border: 2px solid orange;
+    border-right: 1px solid gray;
 }
 
 #navigation > div div:nth-child(2) {
@@ -37,11 +34,10 @@ a {
     padding: 1rem 0;
 } 
 
-
 #page_header {
     grid-column: 2 / 7;
     padding: 0 1rem;
-    border: 2px solid darkblue;
+    border-bottom: 1px solid gray;
 }
 
 nav {
@@ -70,7 +66,7 @@ nav {
     grid-column: 2 / 3;
     grid-row: 2 / 11;
     padding: 1rem;
-    border: 2px solid orange;
+    border-right: 1px solid gray;
 
     a {
         display: inline-block;
@@ -84,12 +80,9 @@ nav {
     }
 }
 
-
 #content {
     grid-column: 3 / 6;
     grid-row: 2 / 11; 
-    padding: 1rem;
-    border: 2px solid green;
 
     button {
         background-color: #2547D0;
@@ -99,26 +92,24 @@ nav {
         padding: 0.7rem;
         border-radius: 1.4px;
     }
-}
 
-form {
+    form {
 
-    div {
-        border-top: 1px solid gray;
+        div {
+            border-top: 1px solid gray;
+        }
+
+        textarea {
+            display: block;
+        }
     }
-
-    textarea {
-        display: block;
-    }
 }
-
-
 
 #right_back_menu {
     grid-column: 6 / 7;
     grid-row: 2 / 11;
     padding: 1rem;
-    border: 2px solid orange;
+    border-left: 1px solid gray;
 
     a {
         display: block;

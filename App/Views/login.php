@@ -24,7 +24,10 @@
                     <label  for="email">Email Address</label>
                     <input type="email" name="email" id="email">
 
-                    <label  for="password">Password</label>
+                    <div class="">
+                        <label for="">Password</label>
+                        <a href="/forgotPassword">forgot</a>
+                    </div>
                     <input type="password" name="password" id="password">
                     <button type="submit">Login</button>
                 </form>

@@ -12,4 +12,9 @@ class GoogleUserRepository implements UserRepositoryInterface
             'picture' => $googleUser['picture']
         ];
     }
+
+    public function updatePasswordByEmail(string $email, string $hashedpassword): array|bool
+    {
+        return [];
+    }
 }

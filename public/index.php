@@ -3,17 +3,23 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
-use App\Core\Router;
-use App\Core\Config;
-use App\Core\Container;
-use App\Contracts\UserInterface;
-use App\Contracts\UserValidateInterface;
-use App\Contracts\UserRepositoryInterface;
+use App\Core\{
+    Container, Database,
+    Router, Config,
+};
+use App\Contracts\{
+    UserInterface, UserValidateInterface, 
+    UserRepositoryInterface, DatabaseInterface
+};
+use App\Controllers\{
+    SignupController, 
+    HomeController, 
+    LoginController,
+    AuthController
+};
 use App\Repositories\GoogleUserRepository;
-use App\Controllers\AuthController;
 use App\Validators\UserValidator;
 use App\Models\User;
-use App\Controllers\{SignupController, HomeController, LoginController};
 
 $dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
@@ -24,6 +30,7 @@ $container = new Container();
 $container->bind(UserInterface::class, User::class);
 $container->bind(UserValidateInterface::class, UserValidator::class);
 $container->bind(UserRepositoryInterface::class, GoogleUserRepository::class);
+$container->bind(DatabaseInterface::class, Database::class);
 
 $router = new Router($container);
 $router->get('/', [HomeController::class, 'index']);
@@ -34,7 +41,9 @@ $router->post('/signup/submit', [SignupController::class, 'submit']);
 $router->get('/auth/google', [AuthController::class, 'redirectToGoogle']);
 $router->get('/callback.php', [AuthController::class, 'callback']);
 $router->get('/forgotPassword', [AuthController::class, 'forgotPassword']);
+$router->post('/forgotPassword', [AuthController::class, 'handleForgotPassword']);
 $router->get('/resetPassword', [AuthController::class, 'resetPassword']);
+$router->post('/resetPassword', [AuthController::class, 'handleResetPassword']);
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
