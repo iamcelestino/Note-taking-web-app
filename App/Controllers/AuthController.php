@@ -72,19 +72,23 @@ class AuthController extends Controller
         $this->view('forgot_password', []);
     }
 
+    public function sendPasswordResetEmail(): void
+    {
+        $this->view('send_password_reset_email', []);
+    }
+
     public function handleForgotPassword()
     {
         $email = $_POST['email'] ?? '';
 
-        if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)) {   
             $passwordResetService = new PasswordResetService(
                 new PasswordResetRepository($this->database),
                 new UserRepository($this->database)
             );
-
             $passwordResetService->requestReset($email);
 
-            echo "A link was sent for you to reset your password";
+            $this->redirect('/resetPasswordEmail');
         }else {
             echo "Invalid email format";
         }
@@ -117,6 +121,5 @@ class AuthController extends Controller
         } else {
             echo "Invalid Password";
         }
-
     }
 }

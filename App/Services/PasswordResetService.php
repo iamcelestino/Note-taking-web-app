@@ -22,7 +22,7 @@ class PasswordResetService
 
     public function resetPassword(string $token, string $newPassword): bool
     {
-        $resetRecord = $this->passwordRepository->findBytoken($token);
+        $resetRecord = $this->passwordRepository->findByToken($token);
 
         if( ! $resetRecord || !isset($resetRecord['email'])) {
             return false;

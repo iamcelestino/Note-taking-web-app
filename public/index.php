@@ -41,6 +41,7 @@ $router->post('/signup/submit', [SignupController::class, 'submit']);
 $router->get('/auth/google', [AuthController::class, 'redirectToGoogle']);
 $router->get('/callback.php', [AuthController::class, 'callback']);
 $router->get('/forgotPassword', [AuthController::class, 'forgotPassword']);
+$router->get('/resetPasswordEmail', [AuthController::class, 'sendPasswordResetEmail']);
 $router->post('/forgotPassword', [AuthController::class, 'handleForgotPassword']);
 $router->get('/resetPassword', [AuthController::class, 'resetPassword']);
 $router->post('/resetPassword', [AuthController::class, 'handleResetPassword']);

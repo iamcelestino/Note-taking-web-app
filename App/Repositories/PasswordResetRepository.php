@@ -26,7 +26,7 @@ class PasswordResetRepository implements  PasswordResetRepositoryInterface
         return $this->database->query(
             "SELECT *
             FROM password_resets 
-            WHERE  token = :token
+            WHERE token = :token
             ",
             [
                 'token' => $token
