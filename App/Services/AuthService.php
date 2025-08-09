@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Services;
 use App\Contracts\{UserInterface, UserValidateInterface};
 use Google_Client;
-use Google_Service_OAuth2;
 
 class AuthService 
 {
@@ -30,7 +29,7 @@ class AuthService
             return true;
         }
 
-        throw new \Exception("Invalid data");
+        throw new \Exception("Invalid data, no user");
     }
 
     public function getGoogleClient(): Google_Client

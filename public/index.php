@@ -16,8 +16,8 @@ use App\Controllers\{
     HomeController, 
     LoginController,
     AuthController
-};
-use App\Repositories\GoogleUserRepository;
+};                           
+use App\Repositories\{GoogleUserRepository, UserRepository};
 use App\Validators\UserValidator;
 use App\Models\User;
 
@@ -31,6 +31,7 @@ $container->bind(UserInterface::class, User::class);
 $container->bind(UserValidateInterface::class, UserValidator::class);
 $container->bind(UserRepositoryInterface::class, GoogleUserRepository::class);
 $container->bind(DatabaseInterface::class, Database::class);
+$container->bind(UserRepositoryInterface::class, UserRepository::class); 
 
 $router = new Router($container);
 $router->get('/', [HomeController::class, 'index']);

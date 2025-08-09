@@ -28,11 +28,11 @@ class PasswordResetRepository implements  PasswordResetRepositoryInterface
             FROM password_resets 
             WHERE token = :token
             ",
-            [
-                'token' => $token
-            ]
-        );
+            ['token' => $token],
+            "array"
+        )[0] ?? null;
     }
+    
     public function deleteByEmail(string $email): bool|array
     {
         return $this->database->query(

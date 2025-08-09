@@ -6,7 +6,9 @@ use App\Contracts\{UserRepositoryInterface, DatabaseInterface};
 
 class UserRepository implements UserRepositoryInterface
 {
-    public function __construct(private DatabaseInterface $database){}
+    public function __construct(
+        private DatabaseInterface $database
+    ){}
 
     public function findOrCreateUser(array $googleUser): array
     {
@@ -16,7 +18,7 @@ class UserRepository implements UserRepositoryInterface
     public function updatePasswordByEmail(string $email, string $hashedPassword): array|bool
     {
         return $this->database->query(
-            "UPDATE users SET password = ? WHERE email = ?",
+            "UPDATE users SET password = :password WHERE email = :email",
             [
                 'password' => $hashedPassword,
                 'email' => $email

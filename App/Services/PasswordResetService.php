@@ -20,11 +20,11 @@ class PasswordResetService
         return true;
     }
 
-    public function resetPassword(string $token, string $newPassword): bool
+    public function resetPassword(string $token, mixed $newPassword): bool
     {
         $resetRecord = $this->passwordRepository->findByToken($token);
 
-        if( ! $resetRecord || !isset($resetRecord['email'])) {
+        if(!$resetRecord || !isset($resetRecord['email'])) {
             return false;
         }
 
@@ -32,10 +32,9 @@ class PasswordResetService
         $email = $resetRecord['email'];
 
         $this->userRepository->updatePasswordByEmail($email, $hashedPassword);
+        
         $this->passwordRepository->deleteByEmail($email);
 
         return true;
     }
-
-    
 }

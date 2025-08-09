@@ -22,5 +22,4 @@ class SignupController extends Controller
             $this->auth->signup($_POST);
         }
     }
-
 }

@@ -1,9 +1,10 @@
 <?php
 
+
 namespace App\Controllers;
 
 use App\Contracts\DatabaseInterface;
-use App\Contracts\UserRepositoryInterface;
+use App\Contracts\{UserRepositoryInterface, PasswordResetRepositoryInterface};
 use App\Core\Controller;
 use App\Repositories\{PasswordResetRepository, UserRepository};
 use App\Services\PasswordResetService;
@@ -109,17 +110,21 @@ class AuthController extends Controller
         if($password != $confirmPassword || strlen($password) < 6) {
             echo "password does match or it too short";
             return;
-        }
-
-        $passwordResetService = new PasswordResetService(
-            new PasswordResetRepository($this->database),
-            new UserRepository($this->database)
-        );
-
-        if($passwordResetService->resetPassword($token, $password)) {
-            echo "Succesfully reseted password";
         } else {
-            echo "Invalid Password";
+            
+            $passwordResetService = new PasswordResetService(
+                new PasswordResetRepository($this->database),
+                new UserRepository($this->database)
+            );
+
+            $passwordResetService->resetPassword($token, $password);
+
+            if($passwordResetService->resetPassword($token, $password)) {
+                echo "Succesfully reseted password";
+            } else {
+                echo "Invalid Password";
+            }
+   
         }
     }
 }
