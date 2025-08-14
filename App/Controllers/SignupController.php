@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller;
-use App\Services\AuthService;
+use App\Services\UserService;
 
 class SignupController extends Controller 
 {
     public function __construct(
-        protected AuthService $auth
+        protected UserService $auth
     ){}
 
     public function index(): void

@@ -1,12 +1,8 @@
 <?php
-
-
 namespace App\Controllers;
 
-use App\Contracts\DatabaseInterface;
-use App\Contracts\{UserRepositoryInterface, PasswordResetRepositoryInterface};
+use App\Contracts\{UserInterface, DatabaseInterface};
 use App\Core\Controller;
-use App\Repositories\{PasswordResetRepository, UserRepository};
 use App\Services\PasswordResetService;
 use Google_Client;
 use Google_Service_OAuth2;
@@ -14,7 +10,7 @@ use Google_Service_OAuth2;
 class AuthController extends Controller
 {
     public function __construct (
-        protected UserRepositoryInterface $userRepo,
+        protected UserInterface $user,
         protected DatabaseInterface $database
     ){}
 
@@ -49,7 +45,7 @@ class AuthController extends Controller
         $oauth = new Google_Service_OAuth2($client);
         $googleUser = $oauth->userinfo->get();
 
-        $user = $this->userRepo->findOrCreateUser([
+        $user = $this->user->findOrCreateUser([
             'name' => $googleUser->name,
             'email' => $googleUser->email,
             'picture' => $googleUser->picture,
@@ -83,10 +79,7 @@ class AuthController extends Controller
         $email = $_POST['email'] ?? '';
 
         if(filter_var($email, FILTER_VALIDATE_EMAIL)) {   
-            $passwordResetService = new PasswordResetService(
-                new PasswordResetRepository($this->database),
-                new UserRepository($this->database)
-            );
+            $passwordResetService = new PasswordResetService($this->user);
             $passwordResetService->requestReset($email);
 
             $this->redirect('/resetPasswordEmail');
@@ -110,21 +103,16 @@ class AuthController extends Controller
         if($password != $confirmPassword || strlen($password) < 6) {
             echo "password does match or it too short";
             return;
+        } 
+
+        $passwordResetService = new PasswordResetService($this->user);
+
+        $passwordResetService->resetPassword($token, $password);
+
+        if($passwordResetService->resetPassword($token, $password)) {
+            echo "Succesfully reseted password";
         } else {
-            
-            $passwordResetService = new PasswordResetService(
-                new PasswordResetRepository($this->database),
-                new UserRepository($this->database)
-            );
-
-            $passwordResetService->resetPassword($token, $password);
-
-            if($passwordResetService->resetPassword($token, $password)) {
-                echo "Succesfully reseted password";
-            } else {
-                echo "Invalid Password";
-            }
-   
+            echo "Invalid Password";
         }
     }
 }

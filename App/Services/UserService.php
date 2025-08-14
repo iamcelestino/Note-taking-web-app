@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Contracts\{UserInterface, UserValidateInterface};
 use Google_Client;
 
-class AuthService 
+class UserService 
 {
     public function __construct (
         protected UserInterface $userModel,
