@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div>
-                    <form action="">
+                    <form action="" method="POST">
                         <textarea name="" id="" rows="25" cols="40"></textarea>
                         <div>
                             <button type="submit">Save Note</button>

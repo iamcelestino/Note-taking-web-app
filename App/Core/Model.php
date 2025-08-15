@@ -22,8 +22,7 @@ abstract class Model extends Database
         $column = addslashes($column);
         $query = "SELECT * FROM " . $this->table . " WHERE " . $column . " = :value";
         $data = $this->query($query, [
-            'value' => $value
-        ]);
+            'value' => $value        ]);
 
         return $data;
     }

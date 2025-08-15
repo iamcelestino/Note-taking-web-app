@@ -7,22 +7,19 @@ use App\Core\{
     Container, Database,
     Router, Config,
 };
+
 use App\Contracts\{
     UserValidateInterface,
-    UserRepositoryInterface, 
     DatabaseInterface,
     UserInterface
 };
+
 use App\Controllers\{
     SignupController, 
     HomeController, 
     LoginController,
     AuthController
 };                           
-use App\Repositories\{
-    GoogleUserRepository, 
-    UserRepository
-};
 
 use App\Validators\UserValidator;
 use App\Models\User;

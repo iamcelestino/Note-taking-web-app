@@ -31,7 +31,6 @@ class User extends Model implements UserInterface
             ]
         );
     }
-
         
     public function create(string $email, string $token): bool|array
     {
