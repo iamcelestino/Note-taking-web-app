@@ -78,8 +78,8 @@
                     </div>
                 </div>
                 <div>
-                    <form action="" method="POST">
-                        <textarea name="" id="" rows="25" cols="40"></textarea>
+                    <form action="note/create" method="POST">
+                        <textarea name="content" id="content" rows="25" cols="40">jgjghghg</textarea>
                         <div>
                             <button type="submit">Save Note</button>
                             <a href="">Cancel</a>

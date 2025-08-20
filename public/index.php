@@ -11,6 +11,8 @@ use App\Core\{
 use App\Contracts\{
     UserValidateInterface,
     DatabaseInterface,
+    NoteInterface,
+    NoteValidateInterface,
     UserInterface
 };
 
@@ -18,11 +20,14 @@ use App\Controllers\{
     SignupController, 
     HomeController, 
     LoginController,
-    AuthController
-};                           
-
-use App\Validators\UserValidator;
-use App\Models\User;
+    AuthController,
+    NoteController
+};
+use App\Models\{Note, User};
+use App\Validators\{
+    UserValidator, 
+    NoteValidator
+};
 
 $dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
@@ -32,6 +37,8 @@ Config::load(__DIR__ . '/../App/Config/App.php');
 $container = new Container();
 $container->bind(UserInterface::class, User::class);
 $container->bind(UserValidateInterface::class, UserValidator::class);
+$container->bind(NoteValidateInterface::class, NoteValidator::class);
+$container->bind(NoteInterface::class, Note::class);
 $container->bind(DatabaseInterface::class, Database::class);
 
 $router = new Router($container);
@@ -47,6 +54,7 @@ $router->get('/resetPasswordEmail', [AuthController::class, 'sendPasswordResetEm
 $router->post('/forgotPassword', [AuthController::class, 'handleForgotPassword']);
 $router->get('/resetPassword', [AuthController::class, 'resetPassword']);
 $router->post('/resetPassword', [AuthController::class, 'handleResetPassword']);
+$router->post('/note/create', [NoteController::class, 'createNote']);
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
