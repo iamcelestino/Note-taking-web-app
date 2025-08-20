@@ -2,8 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Services;
-use App\Enums\NoteStatus;
-use App\Contracts\{NoteInterface, NoteValidateInterface};
+use App\Contracts\{
+    NoteInterface, 
+    NoteValidateInterface
+};
 
 class NoteService
 {
@@ -12,16 +14,10 @@ class NoteService
         protected NoteValidateInterface $noteValidator
     ){}
 
-    public function createNote(array $data): array
+    public function createNote(array $note): void
     {
-        if(!$data['status']) {
-            $data['status'] = NoteStatus::active->value;
-        }
+        $this->noteValidator->validate($note);
+        $this->noteModel->insert($note);
 
-        if($this->noteValidator->validate($data))
-        {
-            return $this->noteModel->insert($data);
-        }
-        return [];
     }
 }

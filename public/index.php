@@ -37,8 +37,8 @@ Config::load(__DIR__ . '/../App/Config/App.php');
 $container = new Container();
 $container->bind(UserInterface::class, User::class);
 $container->bind(UserValidateInterface::class, UserValidator::class);
-$container->bind(NoteValidateInterface::class, NoteValidator::class);
 $container->bind(NoteInterface::class, Note::class);
+$container->bind(NoteValidateInterface::class, NoteValidator::class);
 $container->bind(DatabaseInterface::class, Database::class);
 
 $router = new Router($container);
