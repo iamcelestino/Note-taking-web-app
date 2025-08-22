@@ -13,7 +13,7 @@ class NoteController extends Controller
 
     public function index(): void
     {
-
+        $this->view('all_note', []);
     }
 
     public function createNote(): void
@@ -23,6 +23,8 @@ class NoteController extends Controller
             $_POST['user_id'] = 1 ?? null;
             $this->note->createNote($_POST);
         }
+
+        $this->view('create_new_note', []);
     }
 }
 

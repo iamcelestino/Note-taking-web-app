@@ -18,6 +18,5 @@ class NoteService
     {
         $this->noteValidator->validate($note);
         $this->noteModel->insert($note);
-
     }
 }

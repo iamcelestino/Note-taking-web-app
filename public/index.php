@@ -54,6 +54,7 @@ $router->get('/resetPasswordEmail', [AuthController::class, 'sendPasswordResetEm
 $router->post('/forgotPassword', [AuthController::class, 'handleForgotPassword']);
 $router->get('/resetPassword', [AuthController::class, 'resetPassword']);
 $router->post('/resetPassword', [AuthController::class, 'handleResetPassword']);
+$router->get('/note/create', [NoteController::class, 'createNote']);
 $router->post('/note/create', [NoteController::class, 'createNote']);
 
 $method = $_SERVER['REQUEST_METHOD'];

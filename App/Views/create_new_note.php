@@ -29,6 +29,7 @@
                 <p>language</p>
             </div>
         </aside>
+
         <header id="page_header">
             <nav>
                 <div>
@@ -45,7 +46,7 @@
 
         <aside id="all_notes">
             <div>
-                <a href="note/create">+ create new notes</a>
+                <a href="">+ create new notes</a>
             </div>
             <div>
                 <h1>PHP Has never died</h1>
@@ -60,31 +61,40 @@
         <section id="content">
             <div>
                 <h1>React Performance Optimization</h1>
-                <div class="">
-                    <div>
-                        <p>
-                            <ion-icon name="pricetags-outline"></ion-icon>
-                            tags
-                        </p>
-                        <p>
-                            <ion-icon name="time-outline"></ion-icon>
-                            last edited
-                        </p>
+                <form action="note/create" method="POST">
+                    <div class="">
+                        <div>
+                            <div class="tag">
+                                <label id="tags">
+                                    <div>
+                                        <ion-icon name="pricetags-outline"></ion-icon>
+                                        tags
+                                    </div>
+                                </label>
+                                <input type="text" name="tags" id="tags"  placeholder="add tags separated by commas(e.g. Work, Planning)">
+                            </div>
+                            <div>
+                                <label>
+                                    <div>
+                                        <ion-icon name="time-outline"></ion-icon>
+                                        last edited
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <p>React, dev</p>
+                            <p>29 oct 2024</p>
+                        </div>
                     </div>
                     <div>
-                        <p>React, dev</p>
-                        <p>29 oct 2024</p>
-                    </div>
-                </div>
-                <div>
-                    <form action="note/create" method="POST">
                         <textarea name="content" id="content" rows="25" cols="40"></textarea>
                         <div>
                             <button type="submit">Save Note</button>
                             <a href="">Cancel</a>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </section>
 
