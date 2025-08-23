@@ -61,7 +61,7 @@
         <section id="content">
             <div>
                 <h1>React Performance Optimization</h1>
-                <form action="note/create" method="POST">
+                <form action="create" method="POST">
                     <div class="">
                         <div>
                             <div class="tag">
