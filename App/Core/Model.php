@@ -95,4 +95,24 @@ abstract class Model extends Database
         return $this->query($query, $data);
     }
 
+    public function lastInsertId(): int|string
+    {
+        return $this->connection()->lastInsertId();
+    }
+
+    public function beginTransation(): void
+    {
+        $this->connection()->beginTransaction();
+    }
+
+    public function commit(): void
+    {
+        $this->connection()->commit();
+    }
+
+    public function rollBack(): void
+    {
+        $this->connection()->rollBack();
+    }
+
 }

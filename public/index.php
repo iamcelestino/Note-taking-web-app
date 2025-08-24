@@ -13,7 +13,9 @@ use App\Contracts\{
     DatabaseInterface,
     NoteInterface,
     NoteValidateInterface,
-    UserInterface
+    UserInterface,
+    TagInterface,
+    NoteTagInterface
 };
 
 use App\Controllers\{
@@ -23,7 +25,10 @@ use App\Controllers\{
     AuthController,
     NoteController
 };
-use App\Models\{Note, User};
+use App\Models\{
+    Note, User,
+    Tag, NoteTag
+};
 use App\Validators\{
     UserValidator, 
     NoteValidator
@@ -40,6 +45,9 @@ $container->bind(UserValidateInterface::class, UserValidator::class);
 $container->bind(NoteInterface::class, Note::class);
 $container->bind(NoteValidateInterface::class, NoteValidator::class);
 $container->bind(DatabaseInterface::class, Database::class);
+$container->bind(TagInterface::class, Tag::class);
+$container->bind(NoteTagInterface::class, NoteTag::class);
+
 
 $router = new Router($container);
 $router->get('/', [HomeController::class, 'index']);

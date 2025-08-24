@@ -11,4 +11,8 @@ Interface BaseInterface {
     public function update(mixed $id, array $data): mixed;
     public function getPrimaryKey(): string|int;
     public function delete(int|string $id);
+    public function lastInsertId(): int|string;
+    public function beginTransation(): void;
+    public function commit(): void;
+    public function rollBack(): void;
 }

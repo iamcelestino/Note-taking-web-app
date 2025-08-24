@@ -19,12 +19,10 @@ class NoteController extends Controller
     public function createNote(): void
     {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // $_POST['status'] = NoteStatus::active->value ?? null;
-            // $_POST['user_id'] = 1 ?? null;
-            // $this->note->createNote($_POST);
+            $_POST['status'] = NoteStatus::active->value ?? null;
+            $_POST['user_id'] = 1 ?? null;
             $tags = explode(',', $_POST['tags']);
-
-            dd($tags);
+            $this->note->createNote($_POST, $tags);
         }
 
         $this->view('create_new_note', []);

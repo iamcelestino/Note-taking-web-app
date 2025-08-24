@@ -2,8 +2,12 @@
 declare(strict_types=1);
 
 namespace App\Services;
-use App\Contracts\{UserInterface, UserValidateInterface};
 use Google_Client;
+use App\Contracts\{
+    UserInterface, 
+    UserValidateInterface
+};
+
 
 class UserService 
 {

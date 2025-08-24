@@ -43,24 +43,4 @@ class Database implements DatabaseInterface
         }
         return false;
     }
-
-    public function lastInsertId(): string
-    {
-        return $this->connection()->lastInsertId();
-    }
-
-    public function beginTransation(): void
-    {
-         $this->connection()->beginTransaction();
-    }
-
-    public function commit(): void
-    {
-        $this->connection()->commit();
-    }
-
-    public function rollBack(): void
-    {
-        $this->connection()->rollBack();
-    }
 }
