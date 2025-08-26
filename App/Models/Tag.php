@@ -12,18 +12,18 @@ class Tag extends Model implements TagInterface
         $tag = $this->query(
             "SELECT tag_id
             FROM tags
-            WHERE name = :name
+            WHERE nome = :nome
             ",
-            ['name' => $tagName]
+            ['nome' => $tagName],
         );
 
         if($tag) {
-            return (int) $tag['tag_id'];
+            return (int)$tag['tag_id'];
         }
         
-        $this->insert(['name' => $tagName]);
+        $this->insert(['nome' => $tagName]);
 
-        return $this->lastInsertId();
+        return (int)$this->lastInsertId();
     }
 
 }

@@ -71,7 +71,7 @@
                                         tags
                                     </div>
                                 </label>
-                                <input type="text" name="tags" id="tags"  placeholder="add tags separated by commas(e.g. Work, Planning)">
+                                <input type="text" name="nome" id="nome"  placeholder="add tags separated by commas(e.g. Work, Planning)">
                             </div>
                             <div>
                                 <label>

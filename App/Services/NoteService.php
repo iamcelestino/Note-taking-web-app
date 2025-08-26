@@ -10,7 +10,6 @@ use App\Contracts\{
     NoteTagInterface
 };
 
-
 class NoteService
 {
     public function __construct(
@@ -20,17 +19,17 @@ class NoteService
         protected NoteValidateInterface $noteValidator
     ){}
 
-    public function createNote(array $noteData, array $tags): void
+    public function createNote(array $noteData, array $tagNames): void
     {
         $this->noteValidator->validate($noteData);
         $this->noteModel->beginTransation();
 
         try {
-            
+
             $this->noteModel->insert($noteData);
             $noteId = $this->noteModel->lastInsertId();
-
-            foreach($tags as $tagName) {
+            
+            foreach($tagNames as $tagName) {
 
                 $tagId = $this->tagModel->findOrCreateByName($tagName);
 
@@ -39,11 +38,11 @@ class NoteService
                     'tag_id' => $tagId
                 ]);
             }
-
+            
+            $this->noteModel->commit();
         } catch (Exception $e) {
             $this->noteModel->rollBack();
             throw $e;
-            
         }
     }
 }
