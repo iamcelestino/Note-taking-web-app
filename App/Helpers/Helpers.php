@@ -19,3 +19,28 @@ function dd(mixed $data): void
     echo '</pre>';
     die();
 }
+
+function escape(mixed $var) {
+    if($var == null) {
+        return '';
+    }
+
+    return htmlspecialchars($var);
+}
+
+function getVar(mixed $key, string $default = ''): string
+{
+    if(isset($_POST[$key])) {
+        return $_POST[$key];
+    }
+
+    return $default;
+}
+
+
+function getSelected(string $key, mixed $value) {
+    if($_POST[$key] === $value) {
+        return "selected";
+    }
+    return "";
+}

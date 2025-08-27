@@ -13,7 +13,7 @@ class NoteController extends Controller
 
     public function index(): void
     {
-        $this->view('all_note', []);
+       
     }
 
     public function createNote(): void
@@ -32,6 +32,12 @@ class NoteController extends Controller
         }
 
         $this->view('create_new_note', []);
+    }
+
+    public function deleteNote(): void
+    {
+        $this->note->deleteNote(1);
+        $this->view('delete_note', []);
     }
 }
 

@@ -45,4 +45,14 @@ class NoteService
             throw $e;
         }
     }
+
+    public function getAllNotes(): array
+    {
+        return $this->noteModel->all();
+    }
+
+    public function deleteNote(int $id): void
+    {
+        $this->noteModel->delete($id);
+    }
 }
