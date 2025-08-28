@@ -15,7 +15,7 @@ function generateToken(): string {
 function dd(mixed $data): void
 {
     echo '<pre>';
-    print_r($data);
+        print_r($data);
     echo '</pre>';
     die();
 }
@@ -33,10 +33,8 @@ function getVar(mixed $key, string $default = ''): string
     if(isset($_POST[$key])) {
         return $_POST[$key];
     }
-
     return $default;
 }
-
 
 function getSelected(string $key, mixed $value) {
     if($_POST[$key] === $value) {

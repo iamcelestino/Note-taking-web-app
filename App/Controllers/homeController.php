@@ -15,7 +15,7 @@ class HomeController extends Controller
 
     public function index(): void
     {
-         $notes = $this->note->getAllNotes();
+        $notes = $this->note->getAllNotes();
          
         $this->view('all_notes', [
             'notes' => $notes

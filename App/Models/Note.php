@@ -15,6 +15,7 @@ class Note extends Model implements NoteInterface
                 n.note_id,
                 n.content,
                 n.status,
+                n.created_at,
                 u.user_id,
                 u.full_name,
                 u.email,
@@ -30,6 +31,11 @@ class Note extends Model implements NoteInterface
             [],
         );
     } 
+    
+    public function where(string $column, string $value): array|object|bool
+    {
+        return parent::where('note_id', $value);
+    }
 
     public function delete(int|string $id)
     {

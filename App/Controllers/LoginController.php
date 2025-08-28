@@ -20,7 +20,7 @@ class LoginController extends Controller
     {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             if($this->auth->login($_POST)) {
-                $this->redirect('/');
+                $this->redirect('/home');
             }
         }
     }

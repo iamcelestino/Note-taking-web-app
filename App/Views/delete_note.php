@@ -61,7 +61,7 @@
         <section id="content">
             <div>
                 <h1>React Performance Optimization</h1>
-                <form action="create" method="POST">
+                <form action="/note/delete/<?=$note->note_id?>" method="POST">
                     <div class="">
                         <div>
                             <div class="tag">
@@ -71,7 +71,12 @@
                                         tags
                                     </div>
                                 </label>
-                                <input type="text" name="nome" id="nome"  placeholder="add tags separated by commas(e.g. Work, Planning)">
+                                <input type="text"
+                                         name="nome" 
+                                         id="nome"  
+                                         placeholder="add tags separated by commas(e.g. Work, Planning)"
+                                
+                                >
                             </div>
                             <div>
                                 <label>
@@ -88,7 +93,7 @@
                         </div>
                     </div>
                     <div>
-                        <textarea name="content" id="content" rows="25" cols="40"></textarea>
+                        <textarea name="content" id="content" rows="25" cols="40"> <?=getVar('content', $note->content) ?></textarea>
                         <div>
                             <button type="submit">Delete Note</button>
                             <a href="">Cancel</a>

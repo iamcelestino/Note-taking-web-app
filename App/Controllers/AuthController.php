@@ -52,7 +52,7 @@ class AuthController extends Controller
         ]);
 
         $_SESSION['user'] = $user;
-        header('Location: /');
+        header('Location: /home');
 
     }
 

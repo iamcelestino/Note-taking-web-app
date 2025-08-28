@@ -50,7 +50,7 @@ $container->bind(NoteTagInterface::class, NoteTag::class);
 
 
 $router = new Router($container);
-$router->get('/', [HomeController::class, 'index']);
+$router->get('/home', [HomeController::class, 'index']);
 $router->get('/login', [LoginController::class, 'index']);
 $router->post('/login/submit', [LoginController::class, 'submit']);
 $router->get('/signup', [SignupController::class, 'index']);
@@ -64,6 +64,8 @@ $router->get('/resetPassword', [AuthController::class, 'resetPassword']);
 $router->post('/resetPassword', [AuthController::class, 'handleResetPassword']);
 $router->get('/note/create', [NoteController::class, 'createNote']);
 $router->post('/note/create', [NoteController::class, 'createNote']);
+$router->get('/note/delete/{id}', [NoteController::class, 'deleteNote']);
+$router->post('/note/delete/{id}', [NoteController::class, 'deleteNote']);
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];

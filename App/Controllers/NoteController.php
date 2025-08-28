@@ -2,18 +2,20 @@
 declare(strict_types=1);
 namespace App\Controllers;
 use App\Core\Controller;
-use App\Services\NoteService;
+use App\Services\{NoteService};
+use App\Contracts\NoteValidateInterface;
 use App\Enums\NoteStatus;
 
 class NoteController extends Controller
 {
     public function __construct(
-        protected NoteService $note
+        protected NoteService $note,
+        protected NoteValidateInterface $noteValidator
     ){}
 
     public function index(): void
     {
-       
+        $this->view('all_notes', []);
     }
 
     public function createNote(): void
@@ -28,16 +30,28 @@ class NoteController extends Controller
             
             $nome = explode(',', $_POST['nome']);
             $this->note->createNote($note, $nome);
-            $this->redirect('/');
+            $this->redirect('/home');
         }
 
         $this->view('create_new_note', []);
     }
 
-    public function deleteNote(): void
+    public function deleteNote($id): void
     {
-        $this->note->deleteNote(1);
-        $this->view('delete_note', []);
+        $note_id = (int)$id;
+        $note = $this->note->getSingleNote($note_id);
+
+        if (!$note) {
+            die;
+        }
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->note->deleteNote($id);
+        }
+
+        $this->view('delete_note', [
+            'note' => $note[0]
+        ]);
     }
 }
 

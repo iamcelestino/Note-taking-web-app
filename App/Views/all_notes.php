@@ -8,6 +8,7 @@
 </head>
 <body>
     <main>
+        <?php if($notes): ?>
         <aside id="navigation">
             <div>
                 <div>
@@ -24,9 +25,11 @@
                     </div>
                 </div>
             </div>
+        <?php foreach($notes as $note):  ?>
             <div class="tags">
-                <p>PHP</p>
-                <p>language</p>
+                <li>
+                    <a href=""><?=$note->tags?></a>
+                </li>
             </div>
         </aside>
         <header id="page_header">
@@ -50,10 +53,10 @@
             <div>
                 <h1>PHP Has never died</h1>
                 <div class="tags">
-                    <p>PHP</p>
+                    <p>PH</p>
                     <p>language</p>
                 </div>
-                <p>14 jul 2025</p>
+                <p><?=$note->created_at ?></p>
             </div>
         </aside>
 
@@ -72,32 +75,29 @@
                         </p>
                     </div>
                     <div>
-                        <p>React, dev</p>
-                        <p>29 oct 2024</p>
+                        <p><?=$note->tags?></p>
+                        <p><?=$note->created_at ?></p>
                     </div>
                 </div>
-                <div>
-                    <form action="" method="POST">
-                        <textarea name="content" id="content" rows="25" cols="40"></textarea>
-                        <div>
-                            <button type="submit">Save Note</button>
-                            <a href="">Cancel</a>
-                        </div>
-                    </form>
+                <div class="">
+                    <p><?=$note->content ?></p>
                 </div>
             </div>
         </section>
 
         <aside id="right_back_menu">
-            <a href="">
+            <a href="note/archive/<?=$note->note_id?>">
                 <ion-icon name="archive-outline"></ion-icon>
                 Archive note
             </a>
-            <a href="">
+            <a href="note/delete/<?=$note->note_id?>">
                 <ion-icon name="trash-outline"></ion-icon>
                 Delete Note
             </a>
         </aside>
+        <?php endforeach ?>
+        <?php else: ?>
+        <?php endif ?>
     </main>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
