@@ -86,7 +86,7 @@
             </section>
 
             <aside id="right_back_menu">
-                <a href="note/archive/<?=$note->note_id?>">
+                <a href="note/update/<?=$note->note_id?>">
                     <ion-icon name="archive-outline"></ion-icon>
                     Archive note
                 </a>

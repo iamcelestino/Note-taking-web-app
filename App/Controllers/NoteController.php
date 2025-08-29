@@ -5,6 +5,7 @@ use App\Core\Controller;
 use App\Services\{NoteService};
 use App\Contracts\NoteValidateInterface;
 use App\Enums\NoteStatus;
+use Google\Service\Keep\Resource\Notes;
 
 class NoteController extends Controller
 {
@@ -55,5 +56,28 @@ class NoteController extends Controller
         ]);
     }
 
+    public function updateNote($id)
+    {
+        $note_id = (int)$id;
+        $note = $this->note->getSingleNote($note_id);
+
+        if (!$note) {
+            $this->redirect('/home');
+        }
+
+        $notes = [
+            'content' => $_POST['content'] ?? null,
+            'status' => $_POST['status'] ?? null
+        ];
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->note->updateNote($note_id, $notes);
+            $this->redirect('/home');
+        }
+    
+        $this->view('update_note', [
+            'note' => $note[0]
+        ]);
+    }
 }
 

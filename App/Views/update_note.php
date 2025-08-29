@@ -1,3 +1,9 @@
+<?php
+
+use App\Enums\NoteStatus;
+use Google\Service\GroupsMigration\Resource\Archive;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +67,7 @@
         <section id="content">
             <div>
                 <h1>React Performance Optimization</h1>
-                <form action="/note/delete/<?=$note->note_id?>" method="POST">
+                <form action="/note/update/<?=$note->note_id?>" method="POST">
                     <div class="">
                         <div>
                             <div class="tag">
@@ -75,7 +81,6 @@
                                          name="nome" 
                                          id="nome"  
                                          placeholder="add tags separated by commas(e.g. Work, Planning)"
-                                
                                 >
                             </div>
                             <div>
@@ -93,13 +98,14 @@
                         </div>
                     </div>
                     <div>
-                        <select name="" id="">
+                        <select name="status" id="">
                             <option value="">Note Status</option>
                             <option value="active">Active</option>
+                            <option value="archived">Archived</option>
                         </select>
                         <textarea name="content" id="content" rows="25" cols="40"> <?=getVar('content', $note->content) ?></textarea>
                         <div>
-                            <button type="submit">Delete Note</button>
+                            <button type="submit">Update Note</button>
                             <a href="">Cancel</a>
                         </div>
                     </div>

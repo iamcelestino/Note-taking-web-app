@@ -60,4 +60,9 @@ class NoteService
     {
         $this->noteModel->delete($id);
     }
+
+    public function updateNote(mixed $id, array $data): mixed
+    {
+        return $this->noteModel->update($id, $data);
+    }
 }

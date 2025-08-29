@@ -48,6 +48,9 @@ class Note extends Model implements NoteInterface
         );
     }
 
-
+    public function update(mixed $id, array $data): bool|array
+    {
+        return parent::update($id, $data);
+    }
 }
 

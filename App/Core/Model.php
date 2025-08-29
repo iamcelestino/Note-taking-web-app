@@ -51,7 +51,7 @@ abstract class Model extends Database
         return $this->query($query, $data);
     }
 
-    public function update(mixed $id, array $data): bool
+    public function update(mixed $id, array $data): bool|array
     {
         $string = '';
         foreach($data as $key => $value) {
