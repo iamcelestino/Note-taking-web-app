@@ -56,7 +56,7 @@ class NoteService
         return $this->noteModel->all();
     }
 
-    public function deleteNote(int $id): void
+    public function deleteNote(int|string $id): void
     {
         $this->noteModel->delete($id);
     }

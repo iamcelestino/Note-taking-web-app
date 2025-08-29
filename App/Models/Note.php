@@ -32,7 +32,7 @@ class Note extends Model implements NoteInterface
         );
     } 
     
-    public function where(string $column, string $value): array|object|bool
+    public function where(string $column, mixed $value): array|object|bool
     {
         return parent::where('note_id', $value);
     }
@@ -47,5 +47,7 @@ class Note extends Model implements NoteInterface
             ['note_id' => $id]
         );
     }
+
+
 }
 

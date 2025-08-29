@@ -48,7 +48,6 @@ $container->bind(DatabaseInterface::class, Database::class);
 $container->bind(TagInterface::class, Tag::class);
 $container->bind(NoteTagInterface::class, NoteTag::class);
 
-
 $router = new Router($container);
 $router->get('/home', [HomeController::class, 'index']);
 $router->get('/login', [LoginController::class, 'index']);

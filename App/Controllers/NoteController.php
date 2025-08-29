@@ -42,16 +42,18 @@ class NoteController extends Controller
         $note = $this->note->getSingleNote($note_id);
 
         if (!$note) {
-            die;
+            $this->redirect('/home');
         }
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->note->deleteNote($id);
+            $this->redirect('/home');
         }
 
         $this->view('delete_note', [
             'note' => $note[0]
         ]);
     }
+
 }
 

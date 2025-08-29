@@ -17,7 +17,7 @@ abstract class Model extends Database
         }
     }
 
-    public function where(string $column, string $value): array|object|bool
+    public function where(string $column, mixed $value): array|object|bool
     {
         $column = addslashes($column);
         $query = "SELECT * FROM " . $this->table . " WHERE " . $column . " = :value";
@@ -51,7 +51,7 @@ abstract class Model extends Database
         return $this->query($query, $data);
     }
 
-    public function update(mixed $id, array $data): mixed
+    public function update(mixed $id, array $data): bool
     {
         $string = '';
         foreach($data as $key => $value) {
