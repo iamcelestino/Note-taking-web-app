@@ -61,8 +61,28 @@ class NoteService
         $this->noteModel->delete($id);
     }
 
-    public function updateNote(mixed $id, array $data): mixed
+    public function updateNote(mixed $id, array $data, array $tagNames): void
     {
-        return $this->noteModel->update($id, $data);
+        $this->noteValidator->validate($data);
+        $this->noteModel->beginTransation();
+        try {
+            
+            $this->noteModel->update($id, $data);
+
+            $this->noteTagModel->deleteByNoteId($id);
+
+            foreach ($tagNames as $tagName) {
+                $tagId = $this->tagModel->findOrCreateByName(trim($tagName));
+                $this->noteTagModel->insert([
+                    'note_id' => $id,
+                    'tag_id'  => $tagId
+                ]);
+            }
+
+            $this->noteModel->commit();
+        } catch(Exception $e) {
+            $this->noteModel->rollBack();
+            throw $e;
+        }
     }
 }

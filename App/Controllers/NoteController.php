@@ -5,7 +5,6 @@ use App\Core\Controller;
 use App\Services\{NoteService};
 use App\Contracts\NoteValidateInterface;
 use App\Enums\NoteStatus;
-use Google\Service\Keep\Resource\Notes;
 
 class NoteController extends Controller
 {
@@ -71,7 +70,9 @@ class NoteController extends Controller
         ];
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->note->updateNote($note_id, $notes);
+
+            $nome = explode(',', $_POST['nome']);
+            $this->note->updateNote($note_id, $notes, $nome);
             $this->redirect('/home');
         }
     
@@ -79,5 +80,8 @@ class NoteController extends Controller
             'note' => $note[0]
         ]);
     }
+
+
+    
 }
 

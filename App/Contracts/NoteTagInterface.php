@@ -5,5 +5,5 @@ namespace App\Contracts;
 
 interface NoteTagInterface extends BaseInterface
 {
-
+    public function deleteByNoteId(int $id): mixed;
 }

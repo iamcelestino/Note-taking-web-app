@@ -10,17 +10,15 @@ class Tag extends Model implements TagInterface
     public function findOrCreateByName($tagName): int
     {
         $tag = $this->query(
-            "SELECT tag_id
-            FROM tags
-            WHERE nome = :nome
-            ",
+            "SELECT tag_id FROM tags WHERE nome = :nome",
             ['nome' => $tagName],
+            'array'
         );
 
-        if($tag) {
-            return (int)$tag['tag_id'];
+        if ($tag && isset($tag[0]['tag_id'])) {
+            return (int)$tag[0]['tag_id'];
         }
-        
+
         $this->insert(['nome' => $tagName]);
 
         return (int)$this->lastInsertId();
