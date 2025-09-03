@@ -52,5 +52,27 @@ class Note extends Model implements NoteInterface
     {
         return parent::update($id, $data);
     }
+
+    public function getArchivedNotes(): array
+    {
+        return $this->query(
+            "SELECT 
+                n.note_id,
+                n.content,
+                n.status,
+                n.created_at,
+                u.user_id,
+                u.full_name,
+                u.email,
+                GROUP_CONCAT(t.nome ORDER BY t.nome SEPARATOR ', ') AS tags
+            FROM notes n
+            JOIN users u ON n.user_id = u.user_id
+            LEFT JOIN notetags nt ON n.note_id = nt.note_id
+            LEFT JOIN tags t ON nt.tag_id = t.tag_id
+            WHERE status = 'archived'
+            ",
+            [],
+        );
+    }
 }
 

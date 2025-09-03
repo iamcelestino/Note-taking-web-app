@@ -81,7 +81,13 @@ class NoteController extends Controller
         ]);
     }
 
+    public function getArchivedNotes(): void
+    {
+        $archivedNotes = $this->note->getArchivedNotes();
 
-    
+        $this->view('archived_notes', [
+            'archivedNotes' => $archivedNotes
+        ]);
+    } 
 }
 

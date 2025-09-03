@@ -8,7 +8,7 @@
 </head>
 <body>
     <main>
-        <?php if($notes): ?>
+        <?php if($archivedNotes): ?>
             <aside id="navigation">
                 <div>
                     <div>
@@ -17,25 +17,25 @@
                     <div>
                         <div>
                             <ion-icon name="home-outline"></ion-icon>
-                            <a href="">All Notes</a>
+                            <a href="/home">All Notes</a>
                         </div>
                         <div>
                             <ion-icon name="archive-outline"></ion-icon>
-                            <a href="/note/archived">Archived Notes</a>
+                            <a href="/note/archived">Archived archivedNotes</a>
                         </div>
                     </div>
                 </div>
-            <?php foreach($notes as $note):  ?>
+            <?php foreach($archivedNotes as $archivedNote):  ?>
                 <div class="tags">
                     <li>
-                        <a href=""><?=$note->tags?></a>
+                        <a href=""><?=$archivedNote->tags?></a>
                     </li>
                 </div>
             </aside>
             <header id="page_header">
                 <nav>
                     <div>
-                        <h2>All Notes</h2>
+                        <h2>All archivedNotes</h2>
                     </div>
                     <div>
                         <input type="text" placeholder="search by title, content, or tags">
@@ -56,7 +56,7 @@
                         <p>PH</p>
                         <p>language</p>
                     </div>
-                    <p><?=$note->created_at ?></p>
+                    <p><?=$archivedNote->created_at ?></p>
                 </div>
             </aside>
 
@@ -75,22 +75,22 @@
                             </p>
                         </div>
                         <div>
-                            <p><?=$note->tags?></p>
-                            <p><?=$note->created_at ?></p>
+                            <p><?=$archivedNote->tags?></p>
+                            <p><?=$archivedNote->created_at ?></p>
                         </div>
                     </div>
                     <div class="">
-                        <p><?=$note->content ?></p>
+                        <p><?=$archivedNote->content ?></p>
                     </div>
                 </div>
             </section>
 
             <aside id="right_back_menu">
-                <a href="note/update/<?=$note->note_id?>">
+                <a href="note/update/<?=$archivedNote->note_id?>">
                     <ion-icon name="archive-outline"></ion-icon>
                     Archive note
                 </a>
-                <a href="note/delete/<?=$note->note_id?>">
+                <a href="note/delete/<?=$archivedNote->note_id?>">
                     <ion-icon name="trash-outline"></ion-icon>
                     Delete Note
                 </a>
@@ -105,7 +105,7 @@
                 <div>
                     <div>
                         <ion-icon name="home-outline"></ion-icon>
-                        <a href="">All Notes</a>
+                        <a href="/home">All Notes</a>
                     </div>
                     <div>
                         <ion-icon name="archive-outline"></ion-icon>

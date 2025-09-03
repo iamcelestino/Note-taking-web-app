@@ -85,4 +85,9 @@ class NoteService
             throw $e;
         }
     }
+
+    public function getArchivedNotes(): array
+    {
+        return $this->noteModel->getArchivedNotes();
+    }
 }

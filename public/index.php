@@ -67,6 +67,7 @@ $router->get('/note/delete/{id}', [NoteController::class, 'deleteNote']);
 $router->post('/note/delete/{id}', [NoteController::class, 'deleteNote']);
 $router->get('/note/update/{id}', [NoteController::class, 'updateNote']);
 $router->post('/note/update/{id}', [NoteController::class, 'updateNote']);
+$router->get('/note/archived', [NoteController::class, 'getArchivedNotes']);
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
