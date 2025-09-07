@@ -5,6 +5,7 @@ use App\Core\Controller;
 use App\Services\{NoteService};
 use App\Contracts\NoteValidateInterface;
 use App\Enums\NoteStatus;
+use Dom\Text;
 
 class NoteController extends Controller
 {
@@ -89,5 +90,13 @@ class NoteController extends Controller
             'archivedNotes' => $archivedNotes
         ]);
     } 
+
+    public function searchNote() {
+        if($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $text = $_GET['text'];
+            $notes = $this->note->searchNote($text);
+            dd($notes);
+        }
+    }
 }
 

@@ -90,4 +90,8 @@ class NoteService
     {
         return $this->noteModel->getArchivedNotes();
     }
+
+    public function searchNote(string $text) {
+        return $this->noteModel->searchNote($text);
+    }
 }

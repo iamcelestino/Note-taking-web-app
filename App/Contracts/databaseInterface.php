@@ -8,5 +8,4 @@ interface DatabaseInterface
 {
     public function connection(): PDO;
     public function query(string $query, array $queryData, string $queryDataType = "object"): array|bool;
-
 }

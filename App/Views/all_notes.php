@@ -37,12 +37,14 @@
                     <div>
                         <h2>All Notes</h2>
                     </div>
-                    <div>
-                        <input type="text" placeholder="search by title, content, or tags">
-                        <div>
-                            <ion-icon name="settings-outline"></ion-icon>
+                    <form action="/note/search" method="GET">
+                         <div>
+                            <input type="text" name="text" id="text" placeholder="search by title, content, or tags">
+                            <div>
+                                <ion-icon name="settings-outline"></ion-icon>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </nav>
             </header>
 

@@ -5,4 +5,5 @@ namespace App\Contracts;
 
 Interface NoteInterface extends BaseInterface {  
     public function getArchivedNotes(): array;
+    public function searchNote(string $text): array;
 }
