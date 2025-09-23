@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
+
 namespace App\Controllers;
 use App\Core\Controller;
 use App\Services\{NoteService};
 use App\Contracts\NoteValidateInterface;
 use App\Enums\NoteStatus;
-use Dom\Text;
 
 class NoteController extends Controller
 {
@@ -92,11 +92,15 @@ class NoteController extends Controller
     } 
 
     public function searchNote() {
+
         if($_SERVER['REQUEST_METHOD'] === 'GET') {
             $text = $_GET['text'];
             $notes = $this->note->searchNote($text);
-            dd($notes);
         }
+
+        $this->view('all_notes', [
+            'notes' => $notes
+        ]);
     }
 }
 
