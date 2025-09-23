@@ -2,7 +2,6 @@
 
 namespace App\Contracts;
 
-
 interface PasswordResetInterface 
 {
     public function requestReset(string $email): bool;

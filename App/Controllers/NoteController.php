@@ -26,6 +26,7 @@ class NoteController extends Controller
             $note = [
                 'status' => NoteStatus::active->value ?? null,
                 'user_id' => 1 ?? null,
+                'title' => $_POST['title'],
                 'content' => $_POST['content'] ?? null
             ];
             

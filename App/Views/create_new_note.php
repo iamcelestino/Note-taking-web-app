@@ -57,13 +57,17 @@
                 <p>14 jul 2025</p>
             </div>
         </aside>
-
         <section id="content">
             <div>
                 <h1>React Performance Optimization</h1>
                 <form action="create" method="POST">
                     <div class="">
                         <div>
+                            <div class="">
+                                <label for="">
+                                    <input type="text" name="title" id="title" placeholder="Insert title">
+                                </label>
+                            </div>
                             <div class="tag">
                                 <label id="tags">
                                     <div>
@@ -109,7 +113,6 @@
             </a>
         </aside>
     </main>
-
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

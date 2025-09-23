@@ -10,6 +10,10 @@ class NoteValidator implements NoteValidateInterface
     public function validate(array $data): bool
     {
         $errors = [];
+
+        if(empty($data['title'])) {
+            $errors['title'] = "Note title is missing";
+        }
         
         if(empty($data['content'])){
             $errors['content'] = "Note content is missing";
@@ -18,6 +22,7 @@ class NoteValidator implements NoteValidateInterface
         if(!empty($errors)) {
             throw new ValidateException('Validation failed');
         }
-        return false;
+
+        return true;
     } 
 }

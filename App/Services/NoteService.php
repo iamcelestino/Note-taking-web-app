@@ -21,7 +21,7 @@ class NoteService
 
     public function createNote(array $noteData, array $tagNames): void
     {
-        $this->noteValidator->validate($noteData);
+        // $this->noteValidator->validate($noteData);
         $this->noteModel->beginTransation();
 
         try {
