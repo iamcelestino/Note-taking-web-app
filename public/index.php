@@ -55,11 +55,14 @@ $router->post('/login/submit', [LoginController::class, 'submit']);
 $router->get('/signup', [SignupController::class, 'index']);
 $router->post('/signup/submit', [SignupController::class, 'submit']);
 $router->get('/auth/google', [AuthController::class, 'redirectToGoogle']);
+$router->get('/settings', [AuthController::class,  'settings']);
 $router->get('/callback.php', [AuthController::class, 'callback']);
 $router->get('/forgotPassword', [AuthController::class, 'forgotPassword']);
 $router->get('/resetPasswordEmail', [AuthController::class, 'sendPasswordResetEmail']);
 $router->post('/forgotPassword', [AuthController::class, 'handleForgotPassword']);
 $router->get('/resetPassword', [AuthController::class, 'resetPassword']);
+$router->get('/settings/changePassword/{id}', [AuthController::class, 'changePassword']);
+$router->post('/settings/changePassword', [AuthController::class, 'submitChangePassword']);
 $router->post('/resetPassword', [AuthController::class, 'handleResetPassword']);
 $router->get('/note/create', [NoteController::class, 'createNote']);
 $router->post('/note/create', [NoteController::class, 'createNote']);
@@ -69,6 +72,7 @@ $router->get('/note/update/{id}', [NoteController::class, 'updateNote']);
 $router->post('/note/update/{id}', [NoteController::class, 'updateNote']);
 $router->get('/note/archived', [NoteController::class, 'getArchivedNotes']);
 $router->get('/note/search', [NoteController::class, 'searchNote']);
+
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];

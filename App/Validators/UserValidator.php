@@ -47,4 +47,26 @@ class UserValidator implements UserValidateInterface
 
         return true;
     }
+
+    public function changePassword(array $password): bool
+    {
+        $errors = [];
+        if(empty($password['oldPassword'])) {
+            $errors['oldPassword'] = "incorrect old password";
+        }
+
+        if(empty($password['newPassword'])) {
+            $errors['newPassword'] = "Missing new Password";
+        }
+
+        if(empty($password['confirmPassword'])) {
+            $errors['confirmPassword'] = "Missing confirmed password or incorrect password"; 
+        }
+
+        if(!empty($errors['errors'])) {
+            throw new ValidateException('Validation Failed', $errors);
+        }
+
+        return true;
+    }
 }

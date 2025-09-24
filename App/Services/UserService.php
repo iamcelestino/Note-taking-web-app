@@ -8,7 +8,6 @@ use App\Contracts\{
     UserValidateInterface
 };
 
-
 class UserService 
 {
     public function __construct (
@@ -34,6 +33,21 @@ class UserService
         }
 
         throw new \Exception("Invalid data, no user");
+    }
+
+
+    public function changePassword(array $password, array $user): bool
+    {
+        $this->validator->changePassword($password);
+
+        $user = $this->userModel->where('email', $user['email'])[0] ?? null;
+        $password['confirmPassword'] = password_hash($password['confirmPassword'], PASSWORD_DEFAULT);
+        
+        if($user && password_verify($password['confirmPassword'], $user->password)) {
+            $this->userModel->update($user['user_id'], $password);
+        }
+
+        throw new \Exception("Invalid password");
     }
 
     public function getGoogleClient(): Google_Client

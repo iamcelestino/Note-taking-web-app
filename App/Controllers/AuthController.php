@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Contracts\{UserInterface, DatabaseInterface};
 use App\Core\Controller;
 use App\Services\PasswordResetService;
+use App\Services\UserService;
 use Google_Client;
 use Google_Service_OAuth2;
 
@@ -11,7 +12,9 @@ class AuthController extends Controller
 {
     public function __construct (
         protected UserInterface $user,
+        protected UserService $userService,
         protected DatabaseInterface $database
+
     ){}
 
     public function index(): void
@@ -114,5 +117,34 @@ class AuthController extends Controller
         } else {
             echo "Invalid Password";
         }
+    }
+
+    public function settings()
+    {
+        $this->view('settings', []);
+    }
+    
+    public function changePassword(int $userId): void
+    {
+        $user = $this->user->where('user_id', $userId);
+
+        if(!$user) {
+            echo "No user were found";
+        }
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // $this->userService->changePassword($_POST['confirmPassword'], $user);
+            dd($_POST);
+        }
+        $this->view('change_password', []);
+    }
+
+    public function submitChangePassword(): void
+    {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // $this->userService->changePassword($_POST['confirmPassword'], $user);
+            dd($_POST);
+        }
+
     }
 }

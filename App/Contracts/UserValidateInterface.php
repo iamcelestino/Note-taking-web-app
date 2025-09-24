@@ -7,4 +7,5 @@ interface UserValidateInterface
 {
     public function validate(array $user): bool;
     public function login(array $user): bool;
+    public function changePassword(array $password): bool;
 }
