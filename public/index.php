@@ -1,5 +1,4 @@
 <?php
-
 require __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
@@ -62,7 +61,7 @@ $router->get('/resetPasswordEmail', [AuthController::class, 'sendPasswordResetEm
 $router->post('/forgotPassword', [AuthController::class, 'handleForgotPassword']);
 $router->get('/resetPassword', [AuthController::class, 'resetPassword']);
 $router->get('/settings/changePassword/{id}', [AuthController::class, 'changePassword']);
-$router->post('/settings/changePassword', [AuthController::class, 'submitChangePassword']);
+$router->post('/settings/changePassword/{id}', [AuthController::class, 'changePassword']);
 $router->post('/resetPassword', [AuthController::class, 'handleResetPassword']);
 $router->get('/note/create', [NoteController::class, 'createNote']);
 $router->post('/note/create', [NoteController::class, 'createNote']);

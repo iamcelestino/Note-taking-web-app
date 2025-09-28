@@ -35,19 +35,19 @@ class UserService
         throw new \Exception("Invalid data, no user");
     }
 
-
     public function changePassword(array $password, array $user): bool
     {
         $this->validator->changePassword($password);
 
-        $user = $this->userModel->where('email', $user['email'])[0] ?? null;
+        $user = $this->userModel->where('email', $user[0]->email) ?? null;
         $password['confirmPassword'] = password_hash($password['confirmPassword'], PASSWORD_DEFAULT);
+
+        $confirmPassword = ['password' => $password['confirmPassword']];
         
-        if($user && password_verify($password['confirmPassword'], $user->password)) {
-            $this->userModel->update($user['user_id'], $password);
+        if($user && password_verify($password['oldPassword'], $user[0]->password)) {
+            $this->userModel->update($user[0]->user_id, $confirmPassword);
         }
 
-        throw new \Exception("Invalid password");
     }
 
     public function getGoogleClient(): Google_Client

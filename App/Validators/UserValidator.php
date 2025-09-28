@@ -51,6 +51,7 @@ class UserValidator implements UserValidateInterface
     public function changePassword(array $password): bool
     {
         $errors = [];
+        
         if(empty($password['oldPassword'])) {
             $errors['oldPassword'] = "incorrect old password";
         }
@@ -61,6 +62,10 @@ class UserValidator implements UserValidateInterface
 
         if(empty($password['confirmPassword'])) {
             $errors['confirmPassword'] = "Missing confirmed password or incorrect password"; 
+        }
+
+        if($password['newPassword'] != $password['confirmPassword']) {
+            $errors['unmatchedPassword'] = "confirm password does not match new Password";
         }
 
         if(!empty($errors['errors'])) {

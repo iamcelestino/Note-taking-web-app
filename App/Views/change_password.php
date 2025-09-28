@@ -59,7 +59,9 @@
 
             <section id="content">
                 <div>
-                    <form action="" method="POST">
+                    <?php if($user):  ?>
+                        <?php foreach($user as $userId): ?>
+                    <form action="/settings/changePassword/<?=$userId->user_id?>" method="POST">
                         <label for="">Old Password</label>
                         <input type="password" id="oldPassword" name="oldPassword">
 
@@ -71,6 +73,21 @@
 
                         <button type="submit">Save Password</button>
                     </form>
+                            <?php endforeach ?>
+                    <?php else: ?>
+                    <form action="/settings/changePassword" method="POST">
+                        <label for="">Old Password</label>
+                        <input type="password" id="oldPassword" name="oldPassword">
+
+                        <label for="">New Password</label>
+                        <input type="password" id="newPassword" name="newPassword">
+
+                        <label for="">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword">
+
+                        <button type="submit">Save Password</button>
+                    </form>
+                    <?php endif; ?>
                 </div>
             </section>
     </main>

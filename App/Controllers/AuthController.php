@@ -133,18 +133,12 @@ class AuthController extends Controller
         }
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // $this->userService->changePassword($_POST['confirmPassword'], $user);
-            dd($_POST);
+            $this->userService->changePassword($_POST, $user);
+            echo "Successfully Changed";
         }
-        $this->view('change_password', []);
-    }
+        $this->view('change_password', [
+            'user' => $user
+        ]);
 
-    public function submitChangePassword(): void
-    {
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // $this->userService->changePassword($_POST['confirmPassword'], $user);
-            dd($_POST);
-        }
-
-    }
+}
 }
