@@ -15,7 +15,7 @@ class User extends Model implements UserInterface
     public function findOrCreateUser(array $googleUser): array
     {
         return [
-            'name' => $googleUser['name'],
+            'full_name' => $googleUser['name'],
             'email' => $googleUser['email'],
             'picture' => $googleUser['picture']
         ];

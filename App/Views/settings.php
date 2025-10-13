@@ -20,7 +20,7 @@
                         </div>
                         <div>
                             <ion-icon name="archive-outline"></ion-icon>
-                            <a href="/note/archived">Archived archivedNotes</a>
+                        <a href="/note/archived">Archived archivedNotes</a>
                         </div>
                     </div>
                 </div>
@@ -44,18 +44,20 @@
                 </nav>
             </header>
 
+            <?php if($user): ?>
             <aside id="">
                 <div>
-                   <a href="">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                    Change Password
+                    <a href="/settings/changePassword/<?=$user->user_id?>">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        Change Password
                     </a>
-                   <a href="">
+                   <a href="/settings/logout">
                     <ion-icon name="log-out-outline"></ion-icon>
-                    Logout
+                        Logout
                     </a>
                 </div>
             </aside>
+            <?php endif?>
 
             <section id="content">
                 <div>

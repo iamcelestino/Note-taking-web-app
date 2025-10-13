@@ -40,9 +40,9 @@
                     <form action="/note/search" method="GET">
                          <div>
                             <input type="text" name="text" id="text" placeholder="search by title, content, or tags">
-                            <div>
+                           <a href="">
                                 <ion-icon name="settings-outline"></ion-icon>
-                            </div>
+                           </a>
                         </div>
                     </form>
                 </nav>
@@ -123,9 +123,9 @@
                 </div>
                 <div>
                     <input type="text" placeholder="search by title, content, or tags">
-                    <div>
+                     <a href="/settings">
                         <ion-icon name="settings-outline"></ion-icon>
-                    </div>
+                    </a>
                 </div>
             </nav>
         </header>

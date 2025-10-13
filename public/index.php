@@ -1,4 +1,5 @@
 <?php
+session_start();
 require __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
@@ -14,7 +15,8 @@ use App\Contracts\{
     NoteValidateInterface,
     UserInterface,
     TagInterface,
-    NoteTagInterface
+    NoteTagInterface,
+    AuthInterface
 };
 
 use App\Controllers\{
@@ -24,10 +26,12 @@ use App\Controllers\{
     AuthController,
     NoteController
 };
+
 use App\Models\{
     Note, User,
     Tag, NoteTag
 };
+use App\Services\AuthService;
 use App\Validators\{
     UserValidator, 
     NoteValidator
@@ -40,6 +44,7 @@ Config::load(__DIR__ . '/../App/Config/App.php');
 
 $container = new Container();
 $container->bind(UserInterface::class, User::class);
+$container->bind(AuthInterface::class, AuthService::class);
 $container->bind(UserValidateInterface::class, UserValidator::class);
 $container->bind(NoteInterface::class, Note::class);
 $container->bind(NoteValidateInterface::class, NoteValidator::class);
@@ -55,6 +60,7 @@ $router->get('/signup', [SignupController::class, 'index']);
 $router->post('/signup/submit', [SignupController::class, 'submit']);
 $router->get('/auth/google', [AuthController::class, 'redirectToGoogle']);
 $router->get('/settings', [AuthController::class,  'settings']);
+$router->get('/settings/logout', [AuthController::class,  'logout']);
 $router->get('/callback.php', [AuthController::class, 'callback']);
 $router->get('/forgotPassword', [AuthController::class, 'forgotPassword']);
 $router->get('/resetPasswordEmail', [AuthController::class, 'sendPasswordResetEmail']);
@@ -71,7 +77,6 @@ $router->get('/note/update/{id}', [NoteController::class, 'updateNote']);
 $router->post('/note/update/{id}', [NoteController::class, 'updateNote']);
 $router->get('/note/archived', [NoteController::class, 'getArchivedNotes']);
 $router->get('/note/search', [NoteController::class, 'searchNote']);
-
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];

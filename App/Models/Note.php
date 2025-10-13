@@ -103,4 +103,4 @@ class Note extends Model implements NoteInterface
     }
 
 }
-
+ 

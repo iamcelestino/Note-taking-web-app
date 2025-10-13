@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use App\Contracts\{UserInterface, DatabaseInterface};
+use App\Contracts\{AuthInterface, UserInterface, DatabaseInterface};
 use App\Core\Controller;
 use App\Services\PasswordResetService;
 use App\Services\UserService;
@@ -12,16 +12,16 @@ class AuthController extends Controller
 {
     public function __construct (
         protected UserInterface $user,
+        protected AuthInterface $auth,
         protected UserService $userService,
         protected DatabaseInterface $database
-
     ){}
 
     public function index(): void
     {
         $this->view('login', []);
     }
-
+   
     public function getGoogleClient(): Google_Client
     {
         $client = new Google_Client();
@@ -39,7 +39,6 @@ class AuthController extends Controller
         if (!isset($_GET['code'])) {
             echo "The authorization code is missing";
             return;
-
         }
 
         $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
@@ -49,13 +48,13 @@ class AuthController extends Controller
         $googleUser = $oauth->userinfo->get();
 
         $user = $this->user->findOrCreateUser([
-            'name' => $googleUser->name,
+            'full_name' => $googleUser->name,
             'email' => $googleUser->email,
             'picture' => $googleUser->picture,
         ]);
 
-        $_SESSION['user'] = $user;
-        header('Location: /home');
+        $this->auth->authenticate($user);
+        $this->redirect('/home');
 
     }
 
@@ -120,8 +119,19 @@ class AuthController extends Controller
     }
 
     public function settings()
+    {   
+        $userEmail = $this->auth->getEmail();
+        $user = $this->user->where('email', $userEmail);
+
+        $this->view('settings', [
+            'user' => $user[0]
+        ]);
+    }
+    
+    public function logout(): void
     {
-        $this->view('settings', []);
+        $this->auth->isLoggedOut();
+        $this->redirect('/login');
     }
     
     public function changePassword(int $userId): void
@@ -136,9 +146,9 @@ class AuthController extends Controller
             $this->userService->changePassword($_POST, $user);
             echo "Successfully Changed";
         }
+
         $this->view('change_password', [
             'user' => $user
         ]);
-
-}
+    }
 }

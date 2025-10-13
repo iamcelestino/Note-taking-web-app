@@ -46,7 +46,7 @@ class NoteService
         }
     }
 
-    public function getSingleNote(int|string $note_id): array|object|bool
+    public function getSingleNote(int|string $note_id): array|object
     {
         return $this->noteModel->where('note_id', $note_id);
     }

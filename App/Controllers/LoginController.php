@@ -2,13 +2,16 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
+
+use App\Contracts\AuthInterface;
 use App\Core\Controller;
 use App\Services\UserService;
 
 class LoginController extends Controller
 {
     public function __construct(
-        protected UserService $auth
+        protected UserService $user,
+        protected AuthInterface $auth
     ){}
 
     public function index(): void
@@ -19,9 +22,12 @@ class LoginController extends Controller
     public function submit(): void
     {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if($this->auth->login($_POST)) {
+            if($this->user->login($_POST)) {
+                $this->auth->authenticate($_POST);
                 $this->redirect('/home');
             }
         }
     }
+
+
 }

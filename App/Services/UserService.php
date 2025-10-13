@@ -38,7 +38,7 @@ class UserService
     public function changePassword(array $password, array $user): bool
     {
         $this->validator->changePassword($password);
-
+        
         $user = $this->userModel->where('email', $user[0]->email) ?? null;
         $password['confirmPassword'] = password_hash($password['confirmPassword'], PASSWORD_DEFAULT);
 
@@ -48,19 +48,7 @@ class UserService
             $this->userModel->update($user[0]->user_id, $confirmPassword);
         }
 
+        throw new \Exception("Invalid password");
     }
-
-    public function getGoogleClient(): Google_Client
-    {
-        $client = new Google_Client();
-        $client->setClientId(config('googleSecret')['clientId']);
-        $client->setClientSecret(config('googleSecret')['clientSecret']);
-        $client->setRedirectUri(config('googleSecret')['redirectUri']);
-        $client->addScope('email');
-        $client->addScope('profile');
-
-        return $client;
-    }
-
 }
 

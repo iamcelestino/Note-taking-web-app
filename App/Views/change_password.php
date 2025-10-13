@@ -20,7 +20,7 @@
                         </div>
                         <div>
                             <ion-icon name="archive-outline"></ion-icon>
-                            <a href="/note/archived">Archived archivedNotes</a>
+                            <a href="/note/archived">Archived Notes</a>
                         </div>
                     </div>
                 </div>
@@ -44,49 +44,35 @@
                 </nav>
             </header>
 
-            <aside id="">
-                <div>
-                   <a href="">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                    Change Password
-                    </a>
-                   <a href="">
-                    <ion-icon name="log-out-outline"></ion-icon>
-                    Logout
-                    </a>
-                </div>
-            </aside>
-
             <section id="content">
                 <div>
                     <?php if($user):  ?>
                         <?php foreach($user as $userId): ?>
-                    <form action="/settings/changePassword/<?=$userId->user_id?>" method="POST">
-                        <label for="">Old Password</label>
-                        <input type="password" id="oldPassword" name="oldPassword">
+                        <form action="/settings/changePassword/<?=$userId->user_id?>" method="POST">
+                            <label for="">Old Password</label>
+                            <input type="password" id="oldPassword" name="oldPassword">
 
-                        <label for="">New Password</label>
-                        <input type="password" id="newPassword" name="newPassword">
+                            <label for="">New Password</label>
+                            <input type="password" id="newPassword" name="newPassword">
 
-                        <label for="">Confirm Password</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword">
+                            <label for="">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword">
 
-                        <button type="submit">Save Password</button>
-                    </form>
+                            <button type="submit">Save Password</button>
+                        </form>
                             <?php endforeach ?>
                     <?php else: ?>
-                    <form action="/settings/changePassword" method="POST">
-                        <label for="">Old Password</label>
-                        <input type="password" id="oldPassword" name="oldPassword">
+                        <form action="/settings/changePassword" method="POST">
+                            <label for="">Old Password</label>
+                            <input type="password" id="oldPassword" name="oldPassword">
 
-                        <label for="">New Password</label>
-                        <input type="password" id="newPassword" name="newPassword">
+                            <label for="">New Password</label>
+                            <input type="password" id="newPassword" name="newPassword">
 
-                        <label for="">Confirm Password</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword">
-
-                        <button type="submit">Save Password</button>
-                    </form>
+                            <label for="">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword">
+                            <button type="submit">Save Password</button>
+                        </form>
                     <?php endif; ?>
                 </div>
             </section>
