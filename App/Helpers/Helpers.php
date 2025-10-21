@@ -14,10 +14,6 @@ function generateToken(): string
     return bin2hex(random_bytes(32));
 }
 
-function searchByTagOrContentOrTitle(string $string)
-{
-   
-}
 
 function dd(mixed $data): void
 {
@@ -48,4 +44,19 @@ function getSelected(string $key, mixed $value) {
         return "selected";
     }
     return "";
+}
+
+function convertStringIntoArray(array $notes): array {
+    
+    $allTags = [];
+    foreach($notes as $note) {
+        $tags = $note->tags;
+        if(str_contains($tags, ',')) {
+            $tagArray = array_map('trim', explode(",", $tags));
+            $allTags = array_merge($allTags, $tagArray);
+        } else {
+            $allTags[] = trim($tags);
+        }
+    }
+    return $allTags;
 }

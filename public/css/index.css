@@ -28,6 +28,10 @@ a {
   color: white;
 }
 
+li {
+  list-style-type: none;
+}
+
 body {
   background-color: #191B25;
   color: white;

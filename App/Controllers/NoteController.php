@@ -4,13 +4,15 @@ declare(strict_types=1);
 namespace App\Controllers;
 use App\Core\Controller;
 use App\Services\{NoteService};
-use App\Contracts\NoteValidateInterface;
+use App\Contracts\{NoteValidateInterface, AuthInterface, UserInterface};
 use App\Enums\NoteStatus;
 
 class NoteController extends Controller
 {
     public function __construct(
         protected NoteService $note,
+        protected AuthInterface $auth,
+        protected UserInterface $user,
         protected NoteValidateInterface $noteValidator
     ){}
 
@@ -21,11 +23,19 @@ class NoteController extends Controller
 
     public function createNote(): void
     {
+        
+        $userEmail = $this->auth->getEmail();
+        $user = $this->user->where('email', $userEmail);
+
+        if(!$user) {
+            die;
+        }
+
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $note = [
                 'status' => NoteStatus::active->value ?? null,
-                'user_id' => 1 ?? null,
+                'user_id' => $user[0]->user_id ?? null,
                 'title' => $_POST['title'],
                 'content' => $_POST['content'] ?? null
             ];

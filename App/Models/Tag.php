@@ -24,4 +24,9 @@ class Tag extends Model implements TagInterface
         return (int)$this->lastInsertId();
     }
 
+    public function getAllTags(): array|object
+    {
+        return $this->all();
+    }
+
 }

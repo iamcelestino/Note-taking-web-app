@@ -37,7 +37,7 @@ abstract class Model extends Database
 
     public function all(): array|object|bool
     {
-        $query = "SELECT * FROM ". $this->table;
+        $query = "SELECT * FROM " . $this->table;
         return $this->query($query, []);
     }
 

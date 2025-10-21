@@ -15,6 +15,7 @@ class Note extends Model implements NoteInterface
                 n.note_id,
                 n.content,
                 n.status,
+                n.title,
                 n.created_at,
                 u.user_id,
                 u.full_name,
@@ -60,6 +61,7 @@ class Note extends Model implements NoteInterface
                 n.note_id,
                 n.content,
                 n.status,
+                n.title,
                 n.created_at,
                 u.user_id,
                 u.full_name,
@@ -83,6 +85,7 @@ class Note extends Model implements NoteInterface
                 n.content,
                 n.status,
                 n.created_at,
+                n.title,
                 u.user_id,
                 u.full_name,
                 u.email,
@@ -102,5 +105,10 @@ class Note extends Model implements NoteInterface
         );
     }
 
+    public function getNotesByTags(string $tag): array|object
+    {
+        
+        return [];
+    }
 }
  

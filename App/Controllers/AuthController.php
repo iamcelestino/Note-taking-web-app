@@ -120,6 +120,10 @@ class AuthController extends Controller
 
     public function settings()
     {   
+        if(!$this->auth->isLoggedIn()) {
+            $this->redirect('/login');
+        }
+
         $userEmail = $this->auth->getEmail();
         $user = $this->user->where('email', $userEmail);
 
