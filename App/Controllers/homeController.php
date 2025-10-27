@@ -23,14 +23,14 @@ class HomeController extends Controller
         }
 
         $notes = $this->note->getAllNotes();
-        // $allTags = array_map(fn($note) => $note->tags, $notes); 
-        // foreach($allTags as $tag) 
-        //     { if(str_contains($tag, ',')) { 
-        //         $tag = explode(",", $tag); 
-        //         $allTags[] = $tag;
-        //     } 
-        // }
-        // dd($allTags);
+        $allTags = array_map(fn($note) => $note->tags, $notes); 
+        foreach($allTags as $tag) { 
+            if(str_contains($tag, ',')) { 
+                $tag = explode(",", $tag); 
+                $allTags[] = $tag;
+            } 
+        }
+        
         $allTags = convertStringIntoArray($notes);
 
         $this->view('all_notes', [

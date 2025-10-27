@@ -77,6 +77,8 @@ $router->get('/note/update/{id}', [NoteController::class, 'updateNote']);
 $router->post('/note/update/{id}', [NoteController::class, 'updateNote']);
 $router->get('/note/archived', [NoteController::class, 'getArchivedNotes']);
 $router->get('/note/search', [NoteController::class, 'searchNote']);
+$router->get('/note/tag/{tag}', [NoteController::class, 'getNotesByTags']);
+$router->get('/note/get/{id}', [NoteController::class, 'getAndDisplaySingleNote']);
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];

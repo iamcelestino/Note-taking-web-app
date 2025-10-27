@@ -28,7 +28,7 @@
                     <div class="tags">
                         <?php foreach($tags as $tag):  ?>
                             <li>
-                                <a href="">
+                                <a href="note/tag/<?=$tag?>">
                                     <ion-icon name="pricetags-outline"></ion-icon>
                                     <?= $tag ?>
                                 </a>
@@ -57,14 +57,41 @@
                     </div>
                     <?php foreach($notes as $note): ?>
                     <div>
-                        <h1 class=""><?=$note->title ?></h1>
-                        <p class=""><?=$note->content ?></p>
-                        <p class=""><?=$note->tags ?></p>
+                        <a href="note/get/<?=$note->note_id?>">
+                            <h1 class=""><?=$note->title ?></h1>
+                            <p class=""><?=$note->content ?></p>
+                            <p class=""><?=$note->tags ?></p>
+                        </a>
                     </div>
                     <?php endforeach ?>
                 </aside>
                 <section id="content">
+                    <?php if (!empty($singleNote)): ?>
                     <div>
+                        <h1><?=$singleNote->title?></h1>
+                        <div class="">
+                            <div>
+                                <p>
+                                    <ion-icon name="pricetags-outline"></ion-icon>
+                                    tags
+                                </p>
+                                <p>
+                                    <ion-icon name="time-outline"></ion-icon>
+                                    last edited
+                                </p>
+                            </div>
+                            <div>
+                                <p><?=$singleNote->content?></p>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="">
+                                <p></p>
+                                <p></p>
+                        </div>
+                    </div>
+                    <?php else: ?>
+                        <div>
                         <h1></h1>
                         <div class="">
                             <div>
@@ -82,11 +109,11 @@
                                 <p></p>
                             </div>
                         </div>
-                        
                         <div class="">
                                 <p></p>
                         </div>
                     </div>
+                    <?php endif ?>
                 </section>
                 <?php foreach($notes as $note):  ?>   
                     <aside id="right_back_menu">

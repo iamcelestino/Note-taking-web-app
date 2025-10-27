@@ -48,6 +48,24 @@ class NoteController extends Controller
         $this->view('create_new_note', []);
     }
 
+    public function getAndDisplaySingleNote(int $noteId): void
+    {
+        echo " this note id is a " . gettype($noteId);
+        $singleNote = null;
+        if($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $singleNote = $this->note->getSingleNote($noteId);
+        }
+
+        $notes = $this->note->getAllNotes();
+        $allTags = convertStringIntoArray($notes);
+
+        $this->view('all_notes', [
+            'singleNote' => is_array($singleNote) ? $singleNote[0] : $singleNote,
+            'notes' => $notes,
+            'tags' => $allTags
+        ]);
+    }
+
     public function deleteNote($id): void
     {
         $note_id = (int)$id;
@@ -102,7 +120,7 @@ class NoteController extends Controller
         ]);
     } 
 
-    public function searchNote() {
+    public function searchNote(): void {
 
         if($_SERVER['REQUEST_METHOD'] === 'GET') {
             $text = $_GET['text'];
@@ -112,6 +130,13 @@ class NoteController extends Controller
         $this->view('all_notes', [
             'notes' => $notes
         ]);
+    }
+
+    public function getNotesByTags(): void
+    {
+        $tag = explode("/", $_SERVER['REQUEST_URI']);
+        dd($tag[3]);
+        $this->view('all_notes', []);
     }
 }
 

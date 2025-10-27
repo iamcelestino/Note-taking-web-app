@@ -46,9 +46,9 @@ class NoteService
         }
     }
 
-    public function getSingleNote(int|string $note_id): array|object
+    public function getSingleNote(int $note_id): array|object
     {
-        return $this->noteModel->where('note_id', $note_id);
+        return $this->noteModel->getSingleNote($note_id);
     }
 
     public function getAllNotes(): array
@@ -91,7 +91,13 @@ class NoteService
         return $this->noteModel->getArchivedNotes();
     }
 
-    public function searchNote(string $text) {
+    public function getNotesByTags(string $tag): array|object 
+    {
+        return $this->noteModel->getNotesByTags($tag);
+    }
+
+    public function searchNote(string $text) 
+    {
         return $this->noteModel->searchNote($text);
     }
 }
